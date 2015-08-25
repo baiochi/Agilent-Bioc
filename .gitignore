@@ -12,5 +12,5 @@
 vignettes/*.html
 vignettes/*.pdf
 
-#Html
-.html
+# Html
+*.html
