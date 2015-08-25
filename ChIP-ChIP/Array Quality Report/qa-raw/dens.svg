@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Fig:dens" width="576px" height="252px" viewBox="0 0 576 252" version="1.1">
+  <metadata xmlns:gridsvg="http://www.stat.auckland.ac.nz/~paul/R/gridSVG/">
+    <gridsvg:generator name="gridSVG" version="1.4-3" time="2015-06-17 14:12:00"/>
+    <gridsvg:argument name="name" value="./Array Quality Report/qa-raw//dens.svg"/>
+    <gridsvg:argument name="exportCoords" value="none"/>
+    <gridsvg:argument name="exportMappings" value="none"/>
+    <gridsvg:argument name="exportJS" value="none"/>
+    <gridsvg:argument name="res" value="72"/>
+    <gridsvg:argument name="prefix" value="Fig:dens"/>
+    <gridsvg:argument name="addClasses" value="FALSE"/>
+    <gridsvg:argument name="indent" value="TRUE"/>
+    <gridsvg:argument name="htmlWrapper" value="FALSE"/>
+    <gridsvg:argument name="usePaths" value="none"/>
+    <gridsvg:argument name="uniqueNames" value="TRUE"/>
+    <gridsvg:separator name="id.sep" value="."/>
+    <gridsvg:separator name="gPath.sep" value="::"/>
+    <gridsvg:separator name="vpPath.sep" value="::"/>
+  </metadata>
+  <g transform="translate(0, 252) scale(1, -1)">
+    <g id="Fig:densgridSVG" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-width="0.75" font-size="12" font-family="Helvetica, Arial, FreeSans, Liberation Sans, Nimbus Sans L, sans-serif" opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" fill-opacity="0" font-weight="normal" font-style="normal">
+      <g id="Fig:densplot_01.background.1">
+        <rect id="Fig:densplot_01.background.1.1" x="0" y="0" width="576" height="252" fill="none" stroke="none" stroke-opacity="0" fill-opacity="0"/>
+      </g>
+      <g id="Fig:densplot_01.toplevel.vp.1" font-size="12">
+        <g id="Fig:densplot_01.ylab.vp.1">
+          <g id="Fig:densplot_01.ylab.1">
+            <g id="Fig:densplot_01.ylab.1.1" transform="translate(10.31, 130.89)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ylab.1.1.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ylab.1.1.text" transform="rotate(-90)" text-anchor="middle" opacity="1" stroke="rgb(0,0,0)" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="12" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ylab.1.1.tspan.1" dy="4.31" x="0">Density</tspan>
+                </text>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.figure.vp.1"/>
+        <defs>
+          <clipPath id="Fig:densplot_01.panel.1.1.vp.1.clipPath">
+            <rect x="44.8" y="42.19" width="156.94" height="177.41" fill="none" stroke="none"/>
+          </clipPath>
+        </defs>
+        <g id="Fig:densplot_01.panel.1.1.vp.1" clip-path="url(#Fig:densplot_01.panel.1.1.vp.1.clipPath)"/>
+        <g id="Fig:densplot_01.strip.1.1.off.vp.1"/>
+        <g id="Fig:densplot_01.strip.left.1.1.off.vp.1">
+          <g id="Fig:densplot_01.ticks.left.panel.1.1.1">
+            <polyline id="Fig:densplot_01.ticks.left.panel.1.1.1.1" points="44.8,53.08 39.13,53.08" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.1.1.1.2" points="44.8,98.6 39.13,98.6" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.1.1.1.3" points="44.8,144.13 39.13,144.13" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.1.1.1.4" points="44.8,189.65 39.13,189.65" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+          </g>
+          <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1">
+            <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.1" transform="translate(33.47, 53.08)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.1.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.1.1.1.1.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.1.1.1.1.tspan.1" dy="0" x="0">0.00</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.2" transform="translate(33.47, 98.6)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.2.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.1.1.1.2.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.1.1.1.2.tspan.1" dy="0" x="0">0.01</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.3" transform="translate(33.47, 144.13)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.3.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.1.1.1.3.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.1.1.1.3.tspan.1" dy="0" x="0">0.02</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.4" transform="translate(33.47, 189.65)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.1.1.1.4.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.1.1.1.4.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.1.1.1.4.tspan.1" dy="0" x="0">0.03</tspan>
+                </text>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.panel.1.1.off.vp.1">
+          <g id="Fig:densplot_01.ticks.bottom.panel.1.1.1">
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.1.1.1.1" points="58.02,42.19 58.02,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.1.1.1.2" points="81.97,42.19 81.97,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.1.1.1.3" points="105.92,42.19 105.92,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.1.1.1.4" points="129.88,42.19 129.88,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.1.1.1.5" points="153.83,42.19 153.83,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.1.1.1.6" points="177.78,42.19 177.78,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.1.1.1.7" points="201.73,42.19 201.73,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+          </g>
+          <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1">
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.1" transform="translate(58.02, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.1.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.1.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.1.tspan.1" dy="7.18" x="0">0</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.2" transform="translate(81.97, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.2.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.2.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.2.tspan.1" dy="7.18" x="0">500</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.3" transform="translate(105.92, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.3.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.3.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.3.tspan.1" dy="7.18" x="0">1000</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.4" transform="translate(129.88, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.4.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.4.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.4.tspan.1" dy="7.18" x="0">1500</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.5" transform="translate(153.83, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.5.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.5.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.5.tspan.1" dy="7.18" x="0">2000</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.6" transform="translate(177.78, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.6.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.6.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.1.1.1.6.tspan.1" dy="7.18" x="0">2500</tspan>
+                </text>
+              </g>
+            </g>
+          </g>
+        </g>
+        <defs>
+          <clipPath id="Fig:densplot_01.panel.1.1.vp.2.clipPath">
+            <rect x="44.8" y="42.19" width="156.94" height="177.41" fill="none" stroke="none"/>
+          </clipPath>
+        </defs>
+        <g id="Fig:densplot_01.panel.1.1.vp.2" clip-path="url(#Fig:densplot_01.panel.1.1.vp.2.clipPath)">
+          <g id="Fig:densplot_01.xyplot.lines.group.1.panel.1.1.1">
+            <polyline id="Fig:densplot_01.xyplot.lines.group.1.panel.1.1.1.1" points="54.44,53.08 54.71,53.08 54.97,53.08 55.24,53.08 55.5,53.08 55.77,53.08 56.04,53.08 56.3,53.08 56.57,53.08 56.84,53.08 57.1,53.08 57.37,53.08 57.63,53.09 57.9,53.08 58.17,53.24 58.43,57.85 58.7,98.75 58.96,194.68 59.23,208.71 59.5,150.92 59.76,108.87 60.03,90.63 60.29,81.84 60.56,76.19 60.83,72.13 61.09,69.06 61.36,66.72 61.62,64.95 61.89,63.5 62.16,62.4 62.42,61.32 62.69,60.45 62.96,59.84 63.22,59.27 63.49,58.74 63.75,58.2 64.02,57.7 64.29,57.36 64.55,57.08 64.82,56.81 65.08,56.63 65.35,56.42 65.62,56.21 65.88,56.02 66.15,55.81 66.41,55.64 66.68,55.56 66.95,55.47 67.21,55.32 67.48,55.2 67.75,55.09 68.01,54.96 68.28,54.86 68.54,54.8 68.81,54.77 69.08,54.7 69.34,54.62 69.61,54.56 69.87,54.57 70.14,54.46 70.41,54.28 70.67,54.24 70.94,54.19 71.2,54.12 71.47,54.15 71.74,54.16 72,54.11 72.27,54.07 72.53,53.99 72.8,53.97 73.07,53.98 73.33,54 73.6,53.99 73.87,53.95 74.13,53.9 74.4,53.83 74.66,53.83 74.93,53.79 75.2,53.75 75.46,53.75 75.73,53.76 75.99,53.74 76.26,53.75 76.53,53.75 76.79,53.74 77.06,53.71 77.32,53.7 77.59,53.66 77.86,53.66 78.12,53.67 78.39,53.7 78.65,53.63 78.92,53.57 79.19,53.56 79.45,53.62 79.72,53.62 79.99,53.57 80.25,53.53 80.52,53.53 80.78,53.57 81.05,53.6 81.32,53.56 81.58,53.55 81.85,53.52 82.11,53.53 82.38,53.47 82.65,53.46 82.91,53.51 83.18,53.53 83.44,53.53 83.71,53.49 83.98,53.45 84.24,53.48 84.51,53.53 84.77,53.45 85.04,53.4 85.31,53.46 85.57,53.47 85.84,53.45 86.11,53.47 86.37,53.43 86.64,53.43 86.9,53.38 87.17,53.38 87.44,53.39 87.7,53.39 87.97,53.42 88.23,53.41 88.5,53.37 88.77,53.37 89.03,53.37 89.3,53.34 89.56,53.33 89.83,53.34 90.1,53.34 90.36,53.33 90.63,53.33 90.89,53.35 91.16,53.35 91.43,53.32 91.69,53.33 91.96,53.33 92.23,53.31 92.49,53.3 92.76,53.3 93.02,53.33 93.29,53.35 93.56,53.33 93.82,53.31 94.09,53.28 94.35,53.27 94.62,53.3 94.89,53.29 95.15,53.29 95.42,53.28 95.68,53.27 95.95,53.27 96.22,53.28 96.48,53.26 96.75,53.26 97.01,53.27 97.28,53.27 97.55,53.26 97.81,53.26 98.08,53.27 98.35,53.24 98.61,53.23 98.88,53.26 99.14,53.27 99.41,53.27 99.68,53.29 99.94,53.3 100.21,53.28 100.47,53.25 100.74,53.24 101.01,53.27 101.27,53.27 101.54,53.24 101.8,53.23 102.07,53.23 102.34,53.22 102.6,53.23 102.87,53.23 103.14,53.23 103.4,53.23 103.67,53.22 103.93,53.23 104.2,53.23 104.47,53.21 104.73,53.21 105,53.2 105.26,53.21 105.53,53.21 105.8,53.21 106.06,53.19 106.33,53.2 106.59,53.22 106.86,53.22 107.13,53.22 107.39,53.21 107.66,53.2 107.92,53.19 108.19,53.2 108.46,53.2 108.72,53.2 108.99,53.21 109.26,53.21 109.52,53.2 109.79,53.21 110.05,53.2 110.32,53.2 110.59,53.21 110.85,53.19 111.12,53.19 111.38,53.18 111.65,53.18 111.92,53.18 112.18,53.17 112.45,53.18 112.71,53.18 112.98,53.18 113.25,53.19 113.51,53.18 113.78,53.17 114.04,53.17 114.31,53.2 114.58,53.2 114.84,53.2 115.11,53.2 115.38,53.18 115.64,53.18 115.91,53.18 116.17,53.18 116.44,53.19 116.71,53.18 116.97,53.16 117.24,53.16 117.5,53.16 117.77,53.17 118.04,53.21 118.3,53.21 118.57,53.18 118.83,53.17 119.1,53.19 119.37,53.19 119.63,53.17 119.9,53.17 120.16,53.17 120.43,53.16 120.7,53.15 120.96,53.17 121.23,53.17 121.5,53.15 121.76,53.17 122.03,53.15 122.29,53.17 122.56,53.16 122.83,53.17 123.09,53.18 123.36,53.18 123.62,53.18 123.89,53.17 124.16,53.16 124.42,53.16 124.69,53.16 124.95,53.15 125.22,53.15 125.49,53.14 125.75,53.16 126.02,53.15 126.28,53.15 126.55,53.14 126.82,53.17 127.08,53.17 127.35,53.16 127.62,53.14 127.88,53.14 128.15,53.15 128.41,53.17 128.68,53.17 128.95,53.17 129.21,53.16 129.48,53.17 129.74,53.17 130.01,53.15 130.28,53.15 130.54,53.15 130.81,53.15 131.07,53.16 131.34,53.16 131.61,53.16 131.87,53.17 132.14,53.16 132.4,53.15 132.67,53.15 132.94,53.15 133.2,53.14 133.47,53.14 133.74,53.15 134,53.16 134.27,53.15 134.53,53.15 134.8,53.15 135.07,53.16 135.33,53.15 135.6,53.15 135.86,53.15 136.13,53.15 136.4,53.15 136.66,53.15 136.93,53.15 137.19,53.15 137.46,53.14 137.73,53.14 137.99,53.14 138.26,53.12 138.52,53.13 138.79,53.14 139.06,53.14 139.32,53.13 139.59,53.14 139.86,53.15 140.12,53.15 140.39,53.15 140.65,53.14 140.92,53.14 141.19,53.13 141.45,53.13 141.72,53.14 141.98,53.15 142.25,53.15 142.52,53.14 142.78,53.13 143.05,53.13 143.31,53.14 143.58,53.14 143.85,53.14 144.11,53.12 144.38,53.13 144.65,53.13 144.91,53.12 145.18,53.13 145.44,53.13 145.71,53.14 145.98,53.14 146.24,53.14 146.51,53.14 146.77,53.14 147.04,53.13 147.31,53.14 147.57,53.13 147.84,53.12 148.1,53.12 148.37,53.13 148.64,53.14 148.9,53.14 149.17,53.12 149.43,53.12 149.7,53.13 149.97,53.13 150.23,53.13 150.5,53.13 150.77,53.14 151.03,53.14 151.3,53.14 151.56,53.13 151.83,53.13 152.1,53.13 152.36,53.14 152.63,53.13 152.89,53.13 153.16,53.12 153.43,53.11 153.69,53.11 153.96,53.13 154.22,53.13 154.49,53.13 154.76,53.12 155.02,53.12 155.29,53.11 155.55,53.11 155.82,53.11 156.09,53.11 156.35,53.12 156.62,53.12 156.89,53.14 157.15,53.13 157.42,53.13 157.68,53.14 157.95,53.15 158.22,53.14 158.48,53.14 158.75,53.13 159.01,53.12 159.28,53.13 159.55,53.12 159.81,53.13 160.08,53.11 160.34,53.13 160.61,53.12 160.88,53.12 161.14,53.12 161.41,53.13 161.67,53.12 161.94,53.11 162.21,53.12 162.47,53.11 162.74,53.13 163.01,53.12 163.27,53.12 163.54,53.12 163.8,53.12 164.07,53.12 164.34,53.13 164.6,53.12 164.87,53.12 165.13,53.11 165.4,53.12 165.67,53.13 165.93,53.12 166.2,53.13 166.46,53.12 166.73,53.11 167,53.12 167.26,53.13 167.53,53.12 167.79,53.12 168.06,53.12 168.33,53.12 168.59,53.12 168.86,53.12 169.13,53.12 169.39,53.12 169.66,53.11 169.92,53.11 170.19,53.13 170.46,53.13 170.72,53.12 170.99,53.13 171.25,53.12 171.52,53.12 171.79,53.12 172.05,53.13 172.32,53.12 172.58,53.11 172.85,53.11 173.12,53.11 173.38,53.11 173.65,53.11 173.91,53.12 174.18,53.12 174.45,53.11 174.71,53.11 174.98,53.12 175.25,53.12 175.51,53.11 175.78,53.11 176.04,53.11 176.31,53.11 176.58,53.12 176.84,53.12 177.11,53.11 177.37,53.11 177.64,53.1 177.91,53.11 178.17,53.12 178.44,53.12 178.7,53.11 178.97,53.11 179.24,53.11 179.5,53.1 179.77,53.1 180.04,53.1 180.3,53.11 180.57,53.12 180.83,53.12 181.1,53.12 181.37,53.11 181.63,53.11 181.9,53.1 182.16,53.11 182.43,53.11 182.7,53.11 182.96,53.12 183.23,53.12 183.49,53.13 183.76,53.12 184.03,53.12 184.29,53.12 184.56,53.11 184.82,53.11 185.09,53.11 185.36,53.1 185.62,53.11 185.89,53.12 186.16,53.12 186.42,53.11 186.69,53.11 186.95,53.11 187.22,53.12 187.49,53.12 187.75,53.12 188.02,53.11 188.28,53.1 188.55,53.1 188.82,53.11 189.08,53.12 189.35,53.12 189.61,53.11 189.88,53.11 190.15,53.09 190.41,53.08" stroke-dasharray="none" stroke="rgb(31,120,180)" stroke-width="0.75" opacity="1" stroke-opacity="1" fill="none" class="aqm1" onclick="plotObjRespond('click', 1, 'dens')" onmouseover="plotObjRespond('show', 1, 'dens')" onmouseout="plotObjRespond('hide', 1, 'dens')"/>
+          </g>
+          <g id="Fig:densplot_01.xyplot.lines.group.2.panel.1.1.1">
+            <polyline id="Fig:densplot_01.xyplot.lines.group.2.panel.1.1.1.1" points="56.46,53.1 56.72,53.15 56.99,53.32 57.25,53.79 57.52,54.94 57.79,57.32 58.05,61.55 58.32,67.97 58.58,76.2 58.85,84.98 59.11,92.41 59.38,96.76 59.64,97.27 59.91,94.44 60.17,89.6 60.44,84.2 60.71,79.27 60.97,75.21 61.24,72.07 61.5,69.62 61.77,67.69 62.03,66.13 62.3,64.85 62.56,63.8 62.83,62.92 63.09,62.18 63.36,61.54 63.63,60.98 63.89,60.49 64.16,60.05 64.42,59.66 64.69,59.32 64.95,59.01 65.22,58.74 65.48,58.49 65.75,58.26 66.01,58.06 66.28,57.88 66.55,57.71 66.81,57.56 67.08,57.42 67.34,57.29 67.61,57.15 67.87,57.02 68.14,56.89 68.4,56.76 68.67,56.64 68.93,56.53 69.2,56.42 69.47,56.32 69.73,56.22 70,56.13 70.26,56.04 70.53,55.96 70.79,55.88 71.06,55.8 71.32,55.73 71.59,55.67 71.85,55.62 72.12,55.58 72.39,55.54 72.65,55.5 72.92,55.46 73.18,55.42 73.45,55.37 73.71,55.32 73.98,55.28 74.24,55.23 74.51,55.19 74.77,55.15 75.04,55.12 75.31,55.08 75.57,55.05 75.84,55.01 76.1,54.98 76.37,54.94 76.63,54.92 76.9,54.89 77.16,54.87 77.43,54.84 77.69,54.81 77.96,54.79 78.23,54.76 78.49,54.73 78.76,54.7 79.02,54.68 79.29,54.65 79.55,54.62 79.82,54.59 80.08,54.56 80.35,54.53 80.61,54.51 80.88,54.49 81.15,54.46 81.41,54.44 81.68,54.42 81.94,54.4 82.21,54.38 82.47,54.37 82.74,54.35 83,54.35 83.27,54.34 83.53,54.33 83.8,54.32 84.07,54.3 84.33,54.28 84.6,54.25 84.86,54.23 85.13,54.2 85.39,54.18 85.66,54.16 85.92,54.15 86.19,54.14 86.45,54.13 86.72,54.12 86.99,54.1 87.25,54.09 87.52,54.08 87.78,54.06 88.05,54.04 88.31,54.02 88.58,54 88.84,53.99 89.11,53.98 89.37,53.98 89.64,53.98 89.91,53.97 90.17,53.97 90.44,53.96 90.7,53.95 90.97,53.94 91.23,53.94 91.5,53.94 91.76,53.94 92.03,53.93 92.29,53.93 92.56,53.92 92.83,53.91 93.09,53.9 93.36,53.88 93.62,53.87 93.89,53.85 94.15,53.84 94.42,53.83 94.68,53.81 94.95,53.8 95.22,53.79 95.48,53.78 95.75,53.77 96.01,53.77 96.28,53.76 96.54,53.75 96.81,53.75 97.07,53.74 97.34,53.74 97.6,53.73 97.87,53.72 98.14,53.72 98.4,53.71 98.67,53.7 98.93,53.69 99.2,53.68 99.46,53.68 99.73,53.68 99.99,53.68 100.26,53.68 100.52,53.68 100.79,53.68 101.06,53.68 101.32,53.68 101.59,53.67 101.85,53.66 102.12,53.65 102.38,53.64 102.65,53.63 102.91,53.62 103.18,53.61 103.44,53.61 103.71,53.6 103.98,53.6 104.24,53.59 104.51,53.59 104.77,53.59 105.04,53.58 105.3,53.57 105.57,53.57 105.83,53.57 106.1,53.57 106.36,53.57 106.63,53.57 106.9,53.57 107.16,53.57 107.43,53.56 107.69,53.55 107.96,53.55 108.22,53.54 108.49,53.54 108.75,53.53 109.02,53.53 109.28,53.52 109.55,53.51 109.82,53.51 110.08,53.5 110.35,53.5 110.61,53.49 110.88,53.49 111.14,53.49 111.41,53.49 111.67,53.48 111.94,53.48 112.2,53.47 112.47,53.47 112.74,53.46 113,53.46 113.27,53.46 113.53,53.45 113.8,53.45 114.06,53.45 114.33,53.45 114.59,53.45 114.86,53.45 115.12,53.45 115.39,53.45 115.66,53.44 115.92,53.44 116.19,53.43 116.45,53.43 116.72,53.42 116.98,53.42 117.25,53.42 117.51,53.41 117.78,53.41 118.04,53.4 118.31,53.4 118.58,53.4 118.84,53.39 119.11,53.4 119.37,53.4 119.64,53.4 119.9,53.4 120.17,53.4 120.43,53.39 120.7,53.39 120.96,53.38 121.23,53.38 121.5,53.38 121.76,53.38 122.03,53.38 122.29,53.38 122.56,53.38 122.82,53.37 123.09,53.37 123.35,53.36 123.62,53.36 123.88,53.35 124.15,53.35 124.42,53.35 124.68,53.35 124.95,53.35 125.21,53.34 125.48,53.34 125.74,53.34 126.01,53.34 126.27,53.33 126.54,53.33 126.8,53.33 127.07,53.32 127.34,53.32 127.6,53.32 127.87,53.31 128.13,53.3 128.4,53.3 128.66,53.29 128.93,53.29 129.19,53.29 129.46,53.29 129.72,53.29 129.99,53.29 130.26,53.29 130.52,53.29 130.79,53.29 131.05,53.3 131.32,53.3 131.58,53.3 131.85,53.31 132.11,53.31 132.38,53.31 132.64,53.3 132.91,53.3 133.18,53.29 133.44,53.29 133.71,53.28 133.97,53.28 134.24,53.28 134.5,53.28 134.77,53.28 135.03,53.28 135.3,53.28 135.56,53.28 135.83,53.28 136.1,53.28 136.36,53.28 136.63,53.27 136.89,53.27 137.16,53.27 137.42,53.27 137.69,53.27 137.95,53.27 138.22,53.27 138.48,53.26 138.75,53.26 139.02,53.25 139.28,53.25 139.55,53.25 139.81,53.25 140.08,53.26 140.34,53.26 140.61,53.26 140.87,53.26 141.14,53.25 141.4,53.25 141.67,53.25 141.94,53.24 142.2,53.24 142.47,53.24 142.73,53.24 143,53.23 143.26,53.23 143.53,53.23 143.79,53.24 144.06,53.24 144.32,53.24 144.59,53.25 144.86,53.24 145.12,53.24 145.39,53.24 145.65,53.23 145.92,53.23 146.18,53.23 146.45,53.23 146.71,53.23 146.98,53.23 147.24,53.23 147.51,53.24 147.78,53.24 148.04,53.24 148.31,53.24 148.57,53.23 148.84,53.23 149.1,53.23 149.37,53.23 149.63,53.23 149.9,53.22 150.16,53.22 150.43,53.22 150.7,53.22 150.96,53.22 151.23,53.22 151.49,53.22 151.76,53.22 152.02,53.22 152.29,53.22 152.55,53.21 152.82,53.21 153.08,53.21 153.35,53.21 153.62,53.21 153.88,53.21 154.15,53.2 154.41,53.2 154.68,53.2 154.94,53.2 155.21,53.2 155.47,53.2 155.74,53.2 156,53.2 156.27,53.2 156.54,53.2 156.8,53.2 157.07,53.2 157.33,53.2 157.6,53.2 157.86,53.2 158.13,53.19 158.39,53.19 158.66,53.19 158.93,53.19 159.19,53.2 159.46,53.2 159.72,53.2 159.99,53.19 160.25,53.19 160.52,53.2 160.78,53.2 161.05,53.2 161.31,53.2 161.58,53.2 161.85,53.19 162.11,53.19 162.38,53.19 162.64,53.18 162.91,53.18 163.17,53.18 163.44,53.18 163.7,53.18 163.97,53.18 164.23,53.18 164.5,53.18 164.77,53.18 165.03,53.18 165.3,53.18 165.56,53.18 165.83,53.18 166.09,53.18 166.36,53.19 166.62,53.19 166.89,53.18 167.15,53.18 167.42,53.18 167.69,53.17 167.95,53.17 168.22,53.17 168.48,53.17 168.75,53.17 169.01,53.17 169.28,53.17 169.54,53.17 169.81,53.17 170.07,53.17 170.34,53.17 170.61,53.17 170.87,53.17 171.14,53.17 171.4,53.18 171.67,53.18 171.93,53.18 172.2,53.18 172.46,53.18 172.73,53.18 172.99,53.18 173.26,53.18 173.53,53.18 173.79,53.18 174.06,53.18 174.32,53.18 174.59,53.18 174.85,53.18 175.12,53.18 175.38,53.18 175.65,53.18 175.91,53.17 176.18,53.17 176.45,53.17 176.71,53.16 176.98,53.16 177.24,53.16 177.51,53.16 177.77,53.16 178.04,53.16 178.3,53.16 178.57,53.16 178.83,53.16 179.1,53.16 179.37,53.16 179.63,53.16 179.9,53.16 180.16,53.16 180.43,53.16 180.69,53.16 180.96,53.16 181.22,53.16 181.49,53.15 181.75,53.15 182.02,53.15 182.29,53.14 182.55,53.15 182.82,53.15 183.08,53.15 183.35,53.15 183.61,53.15 183.88,53.15 184.14,53.16 184.41,53.15 184.67,53.15 184.94,53.15 185.21,53.15 185.47,53.15 185.74,53.15 186,53.14 186.27,53.14 186.53,53.14 186.8,53.14 187.06,53.14 187.33,53.14 187.59,53.13 187.86,53.13 188.13,53.13 188.39,53.13 188.66,53.13 188.92,53.12 189.19,53.12 189.45,53.12 189.72,53.11 189.98,53.11 190.25,53.1 190.51,53.09 190.78,53.09 191.05,53.09 191.31,53.08 191.58,53.08 191.84,53.08 192.11,53.08" stroke-dasharray="none" stroke="rgb(31,120,180)" stroke-width="0.75" opacity="1" stroke-opacity="1" fill="none" class="aqm2" onclick="plotObjRespond('click', 2, 'dens')" onmouseover="plotObjRespond('show', 2, 'dens')" onmouseout="plotObjRespond('hide', 2, 'dens')"/>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.panel.1.1.off.vp.2">
+          <g id="Fig:densplot_01.border.panel.1.1.1">
+            <rect id="Fig:densplot_01.border.panel.1.1.1.1" x="44.8" y="42.19" width="156.94" height="177.41" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-width="0.75" opacity="1" fill="none" stroke-opacity="1" fill-opacity="0"/>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.strip.1.1.vp.1">
+          <defs>
+            <clipPath id="Fig:densplot_01.strip.default.1.1.clipPath">
+              <rect x="44.8" y="219.6" width="156.94" height="14.4" fill="none" stroke="none"/>
+            </clipPath>
+          </defs>
+          <g id="Fig:densplot_01.strip.default.1.1" clip-path="url(#Fig:densplot_01.strip.default.1.1.clipPath)">
+            <g id="Fig:densplot_01.bg.strip.1.1.1">
+              <rect id="Fig:densplot_01.bg.strip.1.1.1.1" x="44.8" y="219.6" width="156.94" height="14.4" fill="rgb(204,230,255)" stroke="rgb(204,230,255)" stroke-opacity="1" fill-opacity="1"/>
+            </g>
+            <g id="Fig:densplot_01.textr.strip.1.1.1">
+              <g id="Fig:densplot_01.textr.strip.1.1.1.1" transform="translate(81.59, 226.8)" stroke-width="0.1">
+                <g id="Fig:densplot_01.textr.strip.1.1.1.1.scale" transform="scale(1, -1)">
+                  <text x="0" y="0" id="Fig:densplot_01.textr.strip.1.1.1.1.text" text-anchor="start" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="12" font-weight="normal" font-style="normal">
+                    <tspan id="Fig:densplot_01.textr.strip.1.1.1.1.tspan.1" dy="4.31" x="0">a. Red Channel</tspan>
+                  </text>
+                </g>
+              </g>
+            </g>
+          </g>
+          <g id="Fig:densplot_01.strip.default.off.1.1">
+            <g id="Fig:densplot_01.border.strip.1.1.1">
+              <rect id="Fig:densplot_01.border.strip.1.1.1.1" x="44.8" y="219.6" width="156.94" height="14.4" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-width="0.75" opacity="1" fill="none" stroke-opacity="1" fill-opacity="0"/>
+            </g>
+          </g>
+        </g>
+        <defs>
+          <clipPath id="Fig:densplot_01.panel.2.1.vp.1.clipPath">
+            <rect x="225.93" y="42.19" width="156.94" height="177.41" fill="none" stroke="none"/>
+          </clipPath>
+        </defs>
+        <g id="Fig:densplot_01.panel.2.1.vp.1" clip-path="url(#Fig:densplot_01.panel.2.1.vp.1.clipPath)"/>
+        <g id="Fig:densplot_01.strip.2.1.off.vp.1"/>
+        <g id="Fig:densplot_01.strip.left.2.1.off.vp.1">
+          <g id="Fig:densplot_01.ticks.left.panel.2.1.1">
+            <polyline id="Fig:densplot_01.ticks.left.panel.2.1.1.1" points="225.93,53.08 220.26,53.08" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.2.1.1.2" points="225.93,102.32 220.26,102.32" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.2.1.1.3" points="225.93,151.56 220.26,151.56" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.2.1.1.4" points="225.93,200.8 220.26,200.8" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+          </g>
+          <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1">
+            <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.1" transform="translate(214.59, 53.08)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.1.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.2.1.1.1.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.2.1.1.1.tspan.1" dy="0" x="0">0.000</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.2" transform="translate(214.59, 102.32)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.2.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.2.1.1.2.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.2.1.1.2.tspan.1" dy="0" x="0">0.005</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.3" transform="translate(214.59, 151.56)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.3.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.2.1.1.3.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.2.1.1.3.tspan.1" dy="0" x="0">0.010</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.4" transform="translate(214.59, 200.8)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.2.1.1.4.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.2.1.1.4.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.2.1.1.4.tspan.1" dy="0" x="0">0.015</tspan>
+                </text>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.panel.2.1.off.vp.1">
+          <g id="Fig:densplot_01.ticks.bottom.panel.2.1.1">
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.2.1.1.1" points="237.83,42.19 237.83,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.2.1.1.2" points="270.68,42.19 270.68,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.2.1.1.3" points="303.53,42.19 303.53,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.2.1.1.4" points="336.38,42.19 336.38,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.2.1.1.5" points="369.23,42.19 369.23,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+          </g>
+          <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1">
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.1" transform="translate(237.83, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.1.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.1.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.1.tspan.1" dy="7.18" x="0">0</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.2" transform="translate(270.68, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.2.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.2.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.2.tspan.1" dy="7.18" x="0">500</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.3" transform="translate(303.53, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.3.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.3.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.3.tspan.1" dy="7.18" x="0">1000</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.4" transform="translate(336.38, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.4.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.4.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.4.tspan.1" dy="7.18" x="0">1500</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.5" transform="translate(369.23, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.5.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.5.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.2.1.1.5.tspan.1" dy="7.18" x="0">2000</tspan>
+                </text>
+              </g>
+            </g>
+          </g>
+        </g>
+        <defs>
+          <clipPath id="Fig:densplot_01.panel.2.1.vp.2.clipPath">
+            <rect x="225.93" y="42.19" width="156.94" height="177.41" fill="none" stroke="none"/>
+          </clipPath>
+        </defs>
+        <g id="Fig:densplot_01.panel.2.1.vp.2" clip-path="url(#Fig:densplot_01.panel.2.1.vp.2.clipPath)">
+          <g id="Fig:densplot_01.xyplot.lines.group.1.panel.2.1.1">
+            <polyline id="Fig:densplot_01.xyplot.lines.group.1.panel.2.1.1.1" points="237.02,53.08 237.28,53.08 237.55,53.08 237.81,53.09 238.07,53.11 238.34,53.22 238.6,53.62 238.87,54.85 239.13,58.11 239.4,65.42 239.66,79.35 239.93,101.73 240.19,131.81 240.46,164.88 240.72,193.08 240.98,208.71 241.25,208.12 241.51,193.49 241.78,171.11 242.04,147.78 242.31,127.95 242.57,113.11 242.84,102.72 243.1,95.6 243.36,90.48 243.63,86.62 243.89,83.55 244.16,81 244.42,78.83 244.69,76.94 244.95,75.3 245.22,73.88 245.48,72.65 245.75,71.56 246.01,70.59 246.27,69.72 246.54,68.94 246.8,68.23 247.07,67.59 247.33,66.99 247.6,66.42 247.86,65.86 248.13,65.32 248.39,64.81 248.65,64.33 248.92,63.89 249.18,63.5 249.45,63.16 249.71,62.86 249.98,62.6 250.24,62.39 250.51,62.22 250.77,62.05 251.04,61.85 251.3,61.61 251.56,61.35 251.83,61.09 252.09,60.84 252.36,60.62 252.62,60.41 252.89,60.22 253.15,60.06 253.42,59.91 253.68,59.77 253.95,59.64 254.21,59.51 254.47,59.39 254.74,59.26 255,59.13 255.27,59 255.53,58.86 255.8,58.74 256.06,58.62 256.33,58.52 256.59,58.41 256.85,58.32 257.12,58.23 257.38,58.14 257.65,58.05 257.91,57.97 258.18,57.9 258.44,57.83 258.71,57.76 258.97,57.69 259.24,57.61 259.5,57.54 259.76,57.46 260.03,57.39 260.29,57.33 260.56,57.27 260.82,57.22 261.09,57.15 261.35,57.08 261.62,57.01 261.88,56.96 262.14,56.91 262.41,56.87 262.67,56.83 262.94,56.8 263.2,56.76 263.47,56.72 263.73,56.67 264,56.61 264.26,56.55 264.53,56.48 264.79,56.41 265.05,56.35 265.32,56.29 265.58,56.24 265.85,56.2 266.11,56.16 266.38,56.15 266.64,56.14 266.91,56.14 267.17,56.13 267.44,56.12 267.7,56.1 267.96,56.08 268.23,56.06 268.49,56.03 268.76,55.99 269.02,55.95 269.29,55.9 269.55,55.85 269.82,55.78 270.08,55.71 270.34,55.64 270.61,55.59 270.87,55.56 271.14,55.54 271.4,55.53 271.67,55.51 271.93,55.5 272.2,55.48 272.46,55.46 272.73,55.45 272.99,55.43 273.25,55.41 273.52,55.38 273.78,55.35 274.05,55.32 274.31,55.3 274.58,55.29 274.84,55.27 275.11,55.24 275.37,55.2 275.64,55.16 275.9,55.14 276.16,55.12 276.43,55.11 276.69,55.11 276.96,55.1 277.22,55.09 277.49,55.06 277.75,55.03 278.02,54.99 278.28,54.96 278.54,54.93 278.81,54.9 279.07,54.88 279.34,54.87 279.6,54.87 279.87,54.86 280.13,54.86 280.4,54.85 280.66,54.83 280.93,54.79 281.19,54.75 281.45,54.71 281.72,54.68 281.98,54.66 282.25,54.64 282.51,54.63 282.78,54.61 283.04,54.61 283.31,54.61 283.57,54.62 283.83,54.63 284.1,54.64 284.36,54.64 284.63,54.62 284.89,54.59 285.16,54.57 285.42,54.55 285.69,54.55 285.95,54.55 286.22,54.56 286.48,54.56 286.74,54.55 287.01,54.53 287.27,54.51 287.54,54.48 287.8,54.47 288.07,54.46 288.33,54.45 288.6,54.45 288.86,54.44 289.13,54.43 289.39,54.42 289.65,54.4 289.92,54.38 290.18,54.36 290.45,54.35 290.71,54.34 290.98,54.33 291.24,54.31 291.51,54.3 291.77,54.28 292.03,54.27 292.3,54.26 292.56,54.25 292.83,54.24 293.09,54.22 293.36,54.2 293.62,54.19 293.89,54.19 294.15,54.19 294.42,54.19 294.68,54.19 294.94,54.18 295.21,54.17 295.47,54.15 295.74,54.13 296,54.11 296.27,54.1 296.53,54.09 296.8,54.09 297.06,54.09 297.32,54.09 297.59,54.08 297.85,54.06 298.12,54.06 298.38,54.06 298.65,54.06 298.91,54.07 299.18,54.08 299.44,54.08 299.71,54.08 299.97,54.09 300.23,54.09 300.5,54.09 300.76,54.08 301.03,54.07 301.29,54.05 301.56,54.03 301.82,54 302.09,53.98 302.35,53.95 302.62,53.93 302.88,53.92 303.14,53.92 303.41,53.92 303.67,53.94 303.94,53.95 304.2,53.97 304.47,53.98 304.73,53.98 305,53.97 305.26,53.95 305.52,53.94 305.79,53.92 306.05,53.92 306.32,53.92 306.58,53.93 306.85,53.94 307.11,53.94 307.38,53.93 307.64,53.92 307.91,53.91 308.17,53.9 308.43,53.89 308.7,53.89 308.96,53.89 309.23,53.89 309.49,53.88 309.76,53.87 310.02,53.86 310.29,53.86 310.55,53.86 310.82,53.86 311.08,53.86 311.34,53.85 311.61,53.83 311.87,53.82 312.14,53.81 312.4,53.81 312.67,53.81 312.93,53.81 313.2,53.81 313.46,53.79 313.72,53.77 313.99,53.74 314.25,53.72 314.52,53.7 314.78,53.69 315.05,53.69 315.31,53.69 315.58,53.69 315.84,53.68 316.11,53.68 316.37,53.67 316.63,53.67 316.9,53.67 317.16,53.67 317.43,53.67 317.69,53.68 317.96,53.68 318.22,53.68 318.49,53.67 318.75,53.66 319.01,53.65 319.28,53.64 319.54,53.63 319.81,53.63 320.07,53.63 320.34,53.64 320.6,53.64 320.87,53.63 321.13,53.63 321.4,53.62 321.66,53.62 321.92,53.62 322.19,53.61 322.45,53.6 322.72,53.59 322.98,53.59 323.25,53.58 323.51,53.59 323.78,53.59 324.04,53.59 324.31,53.59 324.57,53.6 324.83,53.6 325.1,53.6 325.36,53.59 325.63,53.59 325.89,53.59 326.16,53.59 326.42,53.6 326.69,53.6 326.95,53.6 327.21,53.6 327.48,53.59 327.74,53.57 328.01,53.55 328.27,53.53 328.54,53.52 328.8,53.51 329.07,53.49 329.33,53.48 329.6,53.48 329.86,53.47 330.12,53.47 330.39,53.48 330.65,53.49 330.92,53.5 331.18,53.51 331.45,53.52 331.71,53.53 331.98,53.52 332.24,53.51 332.51,53.5 332.77,53.48 333.03,53.48 333.3,53.48 333.56,53.48 333.83,53.48 334.09,53.48 334.36,53.47 334.62,53.46 334.89,53.45 335.15,53.45 335.41,53.46 335.68,53.47 335.94,53.47 336.21,53.47 336.47,53.47 336.74,53.46 337,53.46 337.27,53.45 337.53,53.46 337.8,53.47 338.06,53.48 338.32,53.49 338.59,53.49 338.85,53.48 339.12,53.48 339.38,53.47 339.65,53.45 339.91,53.44 340.18,53.43 340.44,53.43 340.7,53.43 340.97,53.43 341.23,53.43 341.5,53.44 341.76,53.44 342.03,53.44 342.29,53.44 342.56,53.44 342.82,53.43 343.09,53.42 343.35,53.41 343.61,53.4 343.88,53.4 344.14,53.39 344.41,53.39 344.67,53.38 344.94,53.38 345.2,53.38 345.47,53.38 345.73,53.38 346,53.38 346.26,53.38 346.52,53.38 346.79,53.38 347.05,53.38 347.32,53.38 347.58,53.38 347.85,53.37 348.11,53.37 348.38,53.38 348.64,53.38 348.9,53.38 349.17,53.38 349.43,53.38 349.7,53.37 349.96,53.37 350.23,53.36 350.49,53.36 350.76,53.36 351.02,53.36 351.29,53.35 351.55,53.35 351.81,53.34 352.08,53.34 352.34,53.35 352.61,53.36 352.87,53.36 353.14,53.37 353.4,53.38 353.67,53.38 353.93,53.38 354.19,53.37 354.46,53.36 354.72,53.36 354.99,53.36 355.25,53.36 355.52,53.36 355.78,53.36 356.05,53.36 356.31,53.36 356.58,53.36 356.84,53.35 357.1,53.35 357.37,53.34 357.63,53.33 357.9,53.33 358.16,53.33 358.43,53.34 358.69,53.34 358.96,53.34 359.22,53.34 359.49,53.34 359.75,53.34 360.01,53.33 360.28,53.33 360.54,53.33 360.81,53.32 361.07,53.32 361.34,53.32 361.6,53.32 361.87,53.32 362.13,53.32 362.39,53.33 362.66,53.33 362.92,53.33 363.19,53.33 363.45,53.33 363.72,53.32 363.98,53.32 364.25,53.32 364.51,53.32 364.78,53.31 365.04,53.31 365.3,53.31 365.57,53.3 365.83,53.3 366.1,53.29 366.36,53.29 366.63,53.28 366.89,53.28 367.16,53.29 367.42,53.29 367.69,53.3 367.95,53.3 368.21,53.3 368.48,53.3 368.74,53.3 369.01,53.3 369.27,53.29 369.54,53.28 369.8,53.26 370.07,53.23 370.33,53.19 370.59,53.16 370.86,53.13 371.12,53.11 371.39,53.09 371.65,53.09 371.92,53.08 372.18,53.08" stroke-dasharray="none" stroke="rgb(31,120,180)" stroke-width="0.75" opacity="1" stroke-opacity="1" fill="none" class="aqm1" onclick="plotObjRespond('click', 1, 'dens')" onmouseover="plotObjRespond('show', 1, 'dens')" onmouseout="plotObjRespond('hide', 1, 'dens')"/>
+          </g>
+          <g id="Fig:densplot_01.xyplot.lines.group.2.panel.2.1.1">
+            <polyline id="Fig:densplot_01.xyplot.lines.group.2.panel.2.1.1.1" points="235.57,53.08 235.84,53.08 236.11,53.08 236.38,53.08 236.65,53.09 236.92,53.09 237.18,53.11 237.45,53.15 237.72,53.25 237.99,53.48 238.26,53.95 238.53,54.84 238.8,56.44 239.07,59.06 239.34,63.06 239.61,68.72 239.88,76.1 240.15,84.97 240.42,94.72 240.69,104.46 240.96,113.11 241.23,119.73 241.5,123.65 241.76,124.7 242.03,123.12 242.3,119.58 242.57,114.98 242.84,109.99 243.11,105.15 243.38,100.73 243.65,96.88 243.92,93.58 244.19,90.77 244.46,88.38 244.73,86.32 245,84.52 245.27,82.94 245.54,81.53 245.81,80.27 246.08,79.13 246.34,78.1 246.61,77.15 246.88,76.26 247.15,75.43 247.42,74.65 247.69,73.92 247.96,73.24 248.23,72.6 248.5,72.01 248.77,71.45 249.04,70.92 249.31,70.42 249.58,69.94 249.85,69.48 250.12,69.05 250.39,68.64 250.66,68.26 250.92,67.91 251.19,67.57 251.46,67.25 251.73,66.94 252,66.62 252.27,66.3 252.54,65.97 252.81,65.63 253.08,65.3 253.35,64.99 253.62,64.69 253.89,64.41 254.16,64.17 254.43,63.95 254.7,63.75 254.97,63.56 255.24,63.39 255.5,63.21 255.77,63.03 256.04,62.85 256.31,62.67 256.58,62.48 256.85,62.3 257.12,62.12 257.39,61.95 257.66,61.78 257.93,61.63 258.2,61.49 258.47,61.36 258.74,61.23 259.01,61.1 259.28,60.98 259.55,60.85 259.82,60.72 260.08,60.58 260.35,60.44 260.62,60.29 260.89,60.15 261.16,60.01 261.43,59.88 261.7,59.75 261.97,59.63 262.24,59.52 262.51,59.41 262.78,59.3 263.05,59.19 263.32,59.09 263.59,58.99 263.86,58.9 264.13,58.81 264.4,58.72 264.66,58.63 264.93,58.55 265.2,58.46 265.47,58.37 265.74,58.29 266.01,58.22 266.28,58.15 266.55,58.09 266.82,58.04 267.09,57.98 267.36,57.93 267.63,57.88 267.9,57.82 268.17,57.76 268.44,57.69 268.71,57.61 268.97,57.54 269.24,57.46 269.51,57.38 269.78,57.31 270.05,57.24 270.32,57.18 270.59,57.11 270.86,57.05 271.13,56.99 271.4,56.93 271.67,56.87 271.94,56.81 272.21,56.75 272.48,56.69 272.75,56.63 273.02,56.57 273.29,56.53 273.55,56.49 273.82,56.45 274.09,56.42 274.36,56.38 274.63,56.35 274.9,56.31 275.17,56.26 275.44,56.22 275.71,56.18 275.98,56.14 276.25,56.1 276.52,56.07 276.79,56.03 277.06,56 277.33,55.97 277.6,55.94 277.87,55.9 278.13,55.87 278.4,55.83 278.67,55.79 278.94,55.76 279.21,55.73 279.48,55.7 279.75,55.68 280.02,55.65 280.29,55.63 280.56,55.6 280.83,55.57 281.1,55.53 281.37,55.49 281.64,55.45 281.91,55.4 282.18,55.36 282.45,55.33 282.71,55.29 282.98,55.26 283.25,55.24 283.52,55.22 283.79,55.21 284.06,55.19 284.33,55.17 284.6,55.16 284.87,55.14 285.14,55.13 285.41,55.12 285.68,55.1 285.95,55.09 286.22,55.07 286.49,55.05 286.76,55.03 287.03,55 287.29,54.98 287.56,54.95 287.83,54.92 288.1,54.89 288.37,54.86 288.64,54.83 288.91,54.81 289.18,54.78 289.45,54.76 289.72,54.74 289.99,54.73 290.26,54.71 290.53,54.7 290.8,54.69 291.07,54.67 291.34,54.66 291.61,54.65 291.87,54.63 292.14,54.61 292.41,54.59 292.68,54.57 292.95,54.55 293.22,54.52 293.49,54.5 293.76,54.48 294.03,54.46 294.3,54.45 294.57,54.43 294.84,54.42 295.11,54.41 295.38,54.4 295.65,54.39 295.92,54.38 296.19,54.36 296.45,54.35 296.72,54.34 296.99,54.32 297.26,54.31 297.53,54.3 297.8,54.28 298.07,54.28 298.34,54.27 298.61,54.26 298.88,54.26 299.15,54.25 299.42,54.24 299.69,54.23 299.96,54.22 300.23,54.21 300.5,54.2 300.76,54.18 301.03,54.17 301.3,54.15 301.57,54.14 301.84,54.12 302.11,54.1 302.38,54.08 302.65,54.07 302.92,54.05 303.19,54.03 303.46,54.02 303.73,54.01 304,54 304.27,53.99 304.54,53.98 304.81,53.97 305.08,53.97 305.34,53.97 305.61,53.97 305.88,53.97 306.15,53.97 306.42,53.97 306.69,53.97 306.96,53.96 307.23,53.96 307.5,53.94 307.77,53.93 308.04,53.91 308.31,53.89 308.58,53.86 308.85,53.84 309.12,53.82 309.39,53.8 309.66,53.79 309.92,53.77 310.19,53.76 310.46,53.75 310.73,53.75 311,53.75 311.27,53.75 311.54,53.75 311.81,53.76 312.08,53.76 312.35,53.77 312.62,53.77 312.89,53.77 313.16,53.76 313.43,53.76 313.7,53.76 313.97,53.75 314.24,53.75 314.5,53.75 314.77,53.75 315.04,53.75 315.31,53.75 315.58,53.74 315.85,53.73 316.12,53.72 316.39,53.7 316.66,53.69 316.93,53.68 317.2,53.67 317.47,53.66 317.74,53.65 318.01,53.65 318.28,53.64 318.55,53.64 318.82,53.63 319.08,53.63 319.35,53.62 319.62,53.61 319.89,53.61 320.16,53.6 320.43,53.59 320.7,53.59 320.97,53.59 321.24,53.59 321.51,53.59 321.78,53.6 322.05,53.61 322.32,53.61 322.59,53.62 322.86,53.62 323.13,53.63 323.4,53.63 323.66,53.62 323.93,53.61 324.2,53.61 324.47,53.6 324.74,53.59 325.01,53.58 325.28,53.58 325.55,53.57 325.82,53.57 326.09,53.57 326.36,53.57 326.63,53.57 326.9,53.57 327.17,53.56 327.44,53.56 327.71,53.55 327.98,53.55 328.24,53.54 328.51,53.54 328.78,53.53 329.05,53.53 329.32,53.52 329.59,53.51 329.86,53.51 330.13,53.5 330.4,53.5 330.67,53.49 330.94,53.49 331.21,53.49 331.48,53.49 331.75,53.49 332.02,53.49 332.29,53.49 332.55,53.49 332.82,53.49 333.09,53.48 333.36,53.48 333.63,53.48 333.9,53.47 334.17,53.47 334.44,53.46 334.71,53.46 334.98,53.45 335.25,53.44 335.52,53.43 335.79,53.42 336.06,53.41 336.33,53.41 336.6,53.4 336.87,53.4 337.13,53.41 337.4,53.41 337.67,53.42 337.94,53.43 338.21,53.43 338.48,53.43 338.75,53.43 339.02,53.43 339.29,53.43 339.56,53.42 339.83,53.41 340.1,53.4 340.37,53.4 340.64,53.4 340.91,53.39 341.18,53.39 341.45,53.39 341.71,53.39 341.98,53.39 342.25,53.39 342.52,53.39 342.79,53.39 343.06,53.39 343.33,53.39 343.6,53.39 343.87,53.39 344.14,53.38 344.41,53.38 344.68,53.38 344.95,53.38 345.22,53.37 345.49,53.37 345.76,53.38 346.03,53.38 346.29,53.38 346.56,53.38 346.83,53.38 347.1,53.38 347.37,53.38 347.64,53.38 347.91,53.38 348.18,53.37 348.45,53.37 348.72,53.37 348.99,53.36 349.26,53.36 349.53,53.35 349.8,53.35 350.07,53.34 350.34,53.33 350.61,53.33 350.87,53.32 351.14,53.32 351.41,53.32 351.68,53.32 351.95,53.32 352.22,53.32 352.49,53.32 352.76,53.32 353.03,53.32 353.3,53.32 353.57,53.32 353.84,53.32 354.11,53.32 354.38,53.32 354.65,53.33 354.92,53.33 355.19,53.33 355.45,53.33 355.72,53.33 355.99,53.33 356.26,53.33 356.53,53.33 356.8,53.32 357.07,53.32 357.34,53.31 357.61,53.3 357.88,53.29 358.15,53.29 358.42,53.28 358.69,53.27 358.96,53.27 359.23,53.27 359.5,53.27 359.76,53.27 360.03,53.27 360.3,53.27 360.57,53.27 360.84,53.27 361.11,53.27 361.38,53.28 361.65,53.28 361.92,53.28 362.19,53.28 362.46,53.28 362.73,53.27 363,53.27 363.27,53.26 363.54,53.25 363.81,53.24 364.08,53.24 364.34,53.24 364.61,53.23 364.88,53.23 365.15,53.23 365.42,53.23 365.69,53.24 365.96,53.24 366.23,53.24 366.5,53.25 366.77,53.25 367.04,53.26 367.31,53.26 367.58,53.27 367.85,53.27 368.12,53.27 368.39,53.27 368.66,53.26 368.92,53.25 369.19,53.23 369.46,53.22 369.73,53.2 370,53.18 370.27,53.16 370.54,53.14 370.81,53.13 371.08,53.11 371.35,53.1 371.62,53.09 371.89,53.09 372.16,53.09 372.43,53.08 372.7,53.08 372.97,53.08 373.24,53.08" stroke-dasharray="none" stroke="rgb(31,120,180)" stroke-width="0.75" opacity="1" stroke-opacity="1" fill="none" class="aqm2" onclick="plotObjRespond('click', 2, 'dens')" onmouseover="plotObjRespond('show', 2, 'dens')" onmouseout="plotObjRespond('hide', 2, 'dens')"/>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.panel.2.1.off.vp.2">
+          <g id="Fig:densplot_01.border.panel.2.1.1">
+            <rect id="Fig:densplot_01.border.panel.2.1.1.1" x="225.93" y="42.19" width="156.94" height="177.41" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-width="0.75" opacity="1" fill="none" stroke-opacity="1" fill-opacity="0"/>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.strip.2.1.vp.1">
+          <defs>
+            <clipPath id="Fig:densplot_01.strip.default.1.2.clipPath">
+              <rect x="225.93" y="219.6" width="156.94" height="14.4" fill="none" stroke="none"/>
+            </clipPath>
+          </defs>
+          <g id="Fig:densplot_01.strip.default.1.2" clip-path="url(#Fig:densplot_01.strip.default.1.2.clipPath)">
+            <g id="Fig:densplot_01.bg.strip.2.1.1">
+              <rect id="Fig:densplot_01.bg.strip.2.1.1.1" x="225.93" y="219.6" width="156.94" height="14.4" fill="rgb(204,230,255)" stroke="rgb(204,230,255)" stroke-opacity="1" fill-opacity="1"/>
+            </g>
+            <g id="Fig:densplot_01.textr.strip.2.1.1">
+              <g id="Fig:densplot_01.textr.strip.2.1.1.1" transform="translate(257.28, 226.8)" stroke-width="0.1">
+                <g id="Fig:densplot_01.textr.strip.2.1.1.1.scale" transform="scale(1, -1)">
+                  <text x="0" y="0" id="Fig:densplot_01.textr.strip.2.1.1.1.text" text-anchor="start" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="12" font-weight="normal" font-style="normal">
+                    <tspan id="Fig:densplot_01.textr.strip.2.1.1.1.tspan.1" dy="4.31" x="0">b. Green Channel</tspan>
+                  </text>
+                </g>
+              </g>
+            </g>
+          </g>
+          <g id="Fig:densplot_01.strip.default.off.1.2">
+            <g id="Fig:densplot_01.border.strip.2.1.1">
+              <rect id="Fig:densplot_01.border.strip.2.1.1.1" x="225.93" y="219.6" width="156.94" height="14.4" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-width="0.75" opacity="1" fill="none" stroke-opacity="1" fill-opacity="0"/>
+            </g>
+          </g>
+        </g>
+        <defs>
+          <clipPath id="Fig:densplot_01.panel.3.1.vp.1.clipPath">
+            <rect x="407.06" y="42.19" width="156.94" height="177.41" fill="none" stroke="none"/>
+          </clipPath>
+        </defs>
+        <g id="Fig:densplot_01.panel.3.1.vp.1" clip-path="url(#Fig:densplot_01.panel.3.1.vp.1.clipPath)"/>
+        <g id="Fig:densplot_01.strip.3.1.off.vp.1"/>
+        <g id="Fig:densplot_01.strip.left.3.1.off.vp.1">
+          <g id="Fig:densplot_01.ticks.left.panel.3.1.1">
+            <polyline id="Fig:densplot_01.ticks.left.panel.3.1.1.1" points="407.06,53.08 401.39,53.08" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.3.1.1.2" points="407.06,86.48 401.39,86.48" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.3.1.1.3" points="407.06,119.89 401.39,119.89" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.3.1.1.4" points="407.06,153.29 401.39,153.29" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.left.panel.3.1.1.5" points="407.06,186.69 401.39,186.69" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+          </g>
+          <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1">
+            <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.1" transform="translate(395.72, 53.08)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.1.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.3.1.1.1.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.3.1.1.1.tspan.1" dy="0" x="0">0.000</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.2" transform="translate(395.72, 86.48)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.2.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.3.1.1.2.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.3.1.1.2.tspan.1" dy="0" x="0">0.005</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.3" transform="translate(395.72, 119.89)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.3.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.3.1.1.3.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.3.1.1.3.tspan.1" dy="0" x="0">0.010</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.4" transform="translate(395.72, 153.29)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.4.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.3.1.1.4.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.3.1.1.4.tspan.1" dy="0" x="0">0.015</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.5" transform="translate(395.72, 186.69)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.left.panel.3.1.1.5.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.left.panel.3.1.1.5.text" transform="rotate(-90)" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.left.panel.3.1.1.5.tspan.1" dy="0" x="0">0.020</tspan>
+                </text>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.panel.3.1.off.vp.1">
+          <g id="Fig:densplot_01.ticks.bottom.panel.3.1.1">
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.3.1.1.1" points="427.94,42.19 427.94,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.3.1.1.2" points="451.16,42.19 451.16,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.3.1.1.3" points="474.38,42.19 474.38,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.3.1.1.4" points="497.61,42.19 497.61,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.3.1.1.5" points="520.83,42.19 520.83,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+            <polyline id="Fig:densplot_01.ticks.bottom.panel.3.1.1.6" points="544.05,42.19 544.05,36.52" stroke="rgb(0,0,0)" opacity="1" stroke-dasharray="none" stroke-width="0.75" stroke-opacity="1" fill="none"/>
+          </g>
+          <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1">
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.1" transform="translate(427.94, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.1.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.1.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.1.tspan.1" dy="7.18" x="0">-1000</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.2" transform="translate(451.16, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.2.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.2.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.2.tspan.1" dy="7.18" x="0">-500</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.3" transform="translate(474.38, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.3.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.3.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.3.tspan.1" dy="7.18" x="0">0</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.4" transform="translate(497.61, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.4.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.4.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.4.tspan.1" dy="7.18" x="0">500</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.5" transform="translate(520.83, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.5.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.5.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.5.tspan.1" dy="7.18" x="0">1000</tspan>
+                </text>
+              </g>
+            </g>
+            <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.6" transform="translate(544.05, 30.85)" stroke-width="0.1">
+              <g id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.6.scale" transform="scale(1, -1)">
+                <text x="0" y="0" id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.6.text" text-anchor="middle" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="9.6" font-weight="normal" font-style="normal">
+                  <tspan id="Fig:densplot_01.ticklabels.bottom.panel.3.1.1.6.tspan.1" dy="7.18" x="0">1500</tspan>
+                </text>
+              </g>
+            </g>
+          </g>
+        </g>
+        <defs>
+          <clipPath id="Fig:densplot_01.panel.3.1.vp.2.clipPath">
+            <rect x="407.06" y="42.19" width="156.94" height="177.41" fill="none" stroke="none"/>
+          </clipPath>
+        </defs>
+        <g id="Fig:densplot_01.panel.3.1.vp.2" clip-path="url(#Fig:densplot_01.panel.3.1.vp.2.clipPath)">
+          <g id="Fig:densplot_01.xyplot.lines.group.1.panel.3.1.1">
+            <polyline id="Fig:densplot_01.xyplot.lines.group.1.panel.3.1.1.1" points="417.28,53.08 417.55,53.11 417.82,53.21 418.09,53.3 418.35,53.34 418.62,53.36 418.89,53.34 419.15,53.33 419.42,53.35 419.69,53.36 419.96,53.38 420.22,53.4 420.49,53.39 420.76,53.4 421.02,53.38 421.29,53.37 421.56,53.37 421.83,53.38 422.09,53.38 422.36,53.39 422.63,53.4 422.89,53.39 423.16,53.38 423.43,53.38 423.7,53.4 423.96,53.42 424.23,53.41 424.5,53.39 424.76,53.39 425.03,53.41 425.3,53.43 425.57,53.43 425.83,53.41 426.1,53.41 426.37,53.42 426.63,53.43 426.9,53.43 427.17,53.41 427.43,53.42 427.7,53.44 427.97,53.45 428.24,53.47 428.5,53.5 428.77,53.52 429.04,53.52 429.3,53.5 429.57,53.46 429.84,53.43 430.11,53.45 430.37,53.48 430.64,53.51 430.91,53.51 431.17,53.49 431.44,53.5 431.71,53.53 431.98,53.55 432.24,53.56 432.51,53.56 432.78,53.56 433.04,53.58 433.31,53.57 433.58,53.55 433.85,53.53 434.11,53.53 434.38,53.54 434.65,53.56 434.91,53.55 435.18,53.53 435.45,53.55 435.72,53.59 435.98,53.61 436.25,53.62 436.52,53.62 436.78,53.64 437.05,53.67 437.32,53.69 437.58,53.68 437.85,53.65 438.12,53.66 438.39,53.67 438.65,53.68 438.92,53.7 439.19,53.68 439.45,53.7 439.72,53.75 439.99,53.76 440.26,53.77 440.52,53.79 440.79,53.79 441.06,53.8 441.32,53.81 441.59,53.78 441.86,53.74 442.13,53.75 442.39,53.79 442.66,53.82 442.93,53.85 443.19,53.87 443.46,53.84 443.73,53.85 444,53.9 444.26,53.93 444.53,53.94 444.8,53.92 445.06,53.93 445.33,53.95 445.6,53.94 445.87,53.92 446.13,53.91 446.4,53.95 446.67,53.97 446.93,53.98 447.2,53.99 447.47,54 447.73,54.02 448,54.06 448.27,54.1 448.54,54.14 448.8,54.18 449.07,54.19 449.34,54.19 449.6,54.21 449.87,54.25 450.14,54.31 450.41,54.3 450.67,54.29 450.94,54.3 451.21,54.32 451.47,54.35 451.74,54.39 452.01,54.43 452.28,54.49 452.54,54.52 452.81,54.48 453.08,54.43 453.34,54.47 453.61,54.58 453.88,54.63 454.15,54.61 454.41,54.63 454.68,54.69 454.95,54.72 455.21,54.68 455.48,54.66 455.75,54.71 456.02,54.76 456.28,54.82 456.55,54.85 456.82,54.87 457.08,54.88 457.35,54.87 457.62,54.92 457.88,55 458.15,55.06 458.42,55.13 458.69,55.11 458.95,55.11 459.22,55.15 459.49,55.23 459.75,55.27 460.02,55.3 460.29,55.42 460.56,55.52 460.82,55.5 461.09,55.57 461.36,55.57 461.62,55.66 461.89,55.79 462.16,55.85 462.43,55.84 462.69,55.88 462.96,55.98 463.23,56.08 463.49,56.22 463.76,56.47 464.03,56.62 464.3,56.68 464.56,56.71 464.83,56.81 465.1,56.94 465.36,57.09 465.63,57.2 465.9,57.31 466.16,57.59 466.43,57.93 466.7,58.2 466.97,58.38 467.23,58.56 467.5,58.73 467.77,58.91 468.03,59.15 468.3,59.6 468.57,60.07 468.84,60.55 469.1,61.16 469.37,61.78 469.64,62.39 469.9,63.11 470.17,63.98 470.44,65.07 470.71,66.49 470.97,68.22 471.24,70.38 471.51,73.27 471.77,77.38 472.04,84.17 472.31,98.14 472.58,127.94 472.84,174.96 473.11,208.71 473.38,188.51 473.64,129.25 473.91,81.83 474.18,62.73 474.45,58.06 474.71,56.88 474.98,56.27 475.25,55.79 475.51,55.39 475.78,55.12 476.05,54.95 476.31,54.81 476.58,54.66 476.85,54.49 477.12,54.35 477.38,54.27 477.65,54.24 477.92,54.21 478.18,54.13 478.45,54.05 478.72,54 478.99,53.96 479.25,53.86 479.52,53.79 479.79,53.75 480.05,53.74 480.32,53.73 480.59,53.71 480.86,53.69 481.12,53.7 481.39,53.67 481.66,53.64 481.92,53.61 482.19,53.58 482.46,53.54 482.73,53.52 482.99,53.52 483.26,53.53 483.53,53.53 483.79,53.52 484.06,53.52 484.33,53.5 484.6,53.44 484.86,53.43 485.13,53.44 485.4,53.44 485.66,53.46 485.93,53.46 486.2,53.42 486.46,53.38 486.73,53.37 487,53.4 487.27,53.4 487.53,53.37 487.8,53.35 488.07,53.37 488.33,53.38 488.6,53.38 488.87,53.37 489.14,53.35 489.4,53.33 489.67,53.35 489.94,53.37 490.2,53.37 490.47,53.37 490.74,53.35 491.01,53.33 491.27,53.33 491.54,53.34 491.81,53.32 492.07,53.31 492.34,53.3 492.61,53.29 492.88,53.29 493.14,53.3 493.41,53.32 493.68,53.32 493.94,53.32 494.21,53.3 494.48,53.28 494.75,53.28 495.01,53.27 495.28,53.25 495.55,53.25 495.81,53.28 496.08,53.29 496.35,53.26 496.61,53.22 496.88,53.22 497.15,53.23 497.42,53.25 497.68,53.26 497.95,53.25 498.22,53.24 498.48,53.22 498.75,53.22 499.02,53.23 499.29,53.24 499.55,53.24 499.82,53.25 500.09,53.26 500.35,53.24 500.62,53.23 500.89,53.22 501.16,53.21 501.42,53.2 501.69,53.2 501.96,53.21 502.22,53.21 502.49,53.21 502.76,53.21 503.03,53.21 503.29,53.2 503.56,53.2 503.83,53.22 504.09,53.24 504.36,53.23 504.63,53.21 504.89,53.19 505.16,53.19 505.43,53.22 505.7,53.23 505.96,53.22 506.23,53.19 506.5,53.19 506.76,53.2 507.03,53.2 507.3,53.2 507.57,53.19 507.83,53.19 508.1,53.19 508.37,53.18 508.63,53.18 508.9,53.18 509.17,53.17 509.44,53.17 509.7,53.18 509.97,53.19 510.24,53.2 510.5,53.21 510.77,53.2 511.04,53.2 511.31,53.2 511.57,53.19 511.84,53.19 512.11,53.18 512.37,53.18 512.64,53.19 512.91,53.19 513.18,53.2 513.44,53.2 513.71,53.19 513.98,53.18 514.24,53.17 514.51,53.17 514.78,53.17 515.04,53.17 515.31,53.15 515.58,53.15 515.85,53.16 516.11,53.17 516.38,53.17 516.65,53.17 516.91,53.17 517.18,53.16 517.45,53.16 517.72,53.16 517.98,53.15 518.25,53.16 518.52,53.17 518.78,53.17 519.05,53.16 519.32,53.16 519.59,53.16 519.85,53.14 520.12,53.14 520.39,53.14 520.65,53.14 520.92,53.15 521.19,53.14 521.46,53.13 521.72,53.13 521.99,53.13 522.26,53.15 522.52,53.15 522.79,53.15 523.06,53.15 523.33,53.14 523.59,53.14 523.86,53.13 524.13,53.13 524.39,53.14 524.66,53.16 524.93,53.17 525.19,53.15 525.46,53.14 525.73,53.15 526,53.15 526.26,53.14 526.53,53.14 526.8,53.14 527.06,53.14 527.33,53.15 527.6,53.15 527.87,53.14 528.13,53.16 528.4,53.17 528.67,53.16 528.93,53.15 529.2,53.15 529.47,53.14 529.74,53.15 530,53.14 530.27,53.15 530.54,53.15 530.8,53.15 531.07,53.15 531.34,53.14 531.61,53.14 531.87,53.13 532.14,53.13 532.41,53.13 532.67,53.13 532.94,53.13 533.21,53.13 533.48,53.14 533.74,53.14 534.01,53.14 534.28,53.13 534.54,53.13 534.81,53.14 535.08,53.15 535.34,53.14 535.61,53.12 535.88,53.12 536.15,53.12 536.41,53.11 536.68,53.12 536.95,53.12 537.21,53.14 537.48,53.15 537.75,53.14 538.02,53.14 538.28,53.14 538.55,53.14 538.82,53.14 539.08,53.13 539.35,53.12 539.62,53.12 539.89,53.13 540.15,53.13 540.42,53.14 540.69,53.14 540.95,53.14 541.22,53.14 541.49,53.15 541.76,53.14 542.02,53.13 542.29,53.13 542.56,53.13 542.82,53.13 543.09,53.14 543.36,53.14 543.62,53.13 543.89,53.12 544.16,53.12 544.43,53.12 544.69,53.12 544.96,53.13 545.23,53.13 545.49,53.13 545.76,53.13 546.03,53.12 546.3,53.11 546.56,53.11 546.83,53.11 547.1,53.12 547.36,53.13 547.63,53.12 547.9,53.12 548.17,53.11 548.43,53.12 548.7,53.13 548.97,53.14 549.23,53.14 549.5,53.13 549.77,53.12 550.04,53.12 550.3,53.11 550.57,53.11 550.84,53.12 551.1,53.13 551.37,53.13 551.64,53.13 551.91,53.12 552.17,53.13 552.44,53.12 552.71,53.13 552.97,53.12 553.24,53.1 553.51,53.09 553.77,53.08" stroke-dasharray="none" stroke="rgb(31,120,180)" stroke-width="0.75" opacity="1" stroke-opacity="1" fill="none" class="aqm1" onclick="plotObjRespond('click', 1, 'dens')" onmouseover="plotObjRespond('show', 1, 'dens')" onmouseout="plotObjRespond('hide', 1, 'dens')"/>
+          </g>
+          <g id="Fig:densplot_01.xyplot.lines.group.2.panel.3.1.1">
+            <polyline id="Fig:densplot_01.xyplot.lines.group.2.panel.3.1.1.1" points="416.7,53.08 416.97,53.08 417.24,53.09 417.5,53.11 417.77,53.14 418.04,53.17 418.31,53.19 418.58,53.21 418.85,53.22 419.12,53.22 419.39,53.22 419.66,53.22 419.93,53.22 420.2,53.23 420.47,53.22 420.74,53.22 421.01,53.22 421.28,53.21 421.55,53.21 421.82,53.21 422.08,53.22 422.35,53.23 422.62,53.23 422.89,53.23 423.16,53.23 423.43,53.23 423.7,53.23 423.97,53.23 424.24,53.24 424.51,53.25 424.78,53.26 425.05,53.26 425.32,53.26 425.59,53.26 425.86,53.27 426.13,53.27 426.4,53.28 426.66,53.28 426.93,53.29 427.2,53.29 427.47,53.29 427.74,53.29 428.01,53.3 428.28,53.31 428.55,53.31 428.82,53.31 429.09,53.32 429.36,53.33 429.63,53.34 429.9,53.34 430.17,53.34 430.44,53.34 430.71,53.34 430.98,53.35 431.24,53.36 431.51,53.38 431.78,53.38 432.05,53.39 432.32,53.38 432.59,53.38 432.86,53.39 433.13,53.39 433.4,53.39 433.67,53.39 433.94,53.38 434.21,53.38 434.48,53.38 434.75,53.39 435.02,53.41 435.29,53.43 435.56,53.43 435.82,53.44 436.09,53.44 436.36,53.45 436.63,53.46 436.9,53.47 437.17,53.48 437.44,53.49 437.71,53.49 437.98,53.49 438.25,53.5 438.52,53.51 438.79,53.53 439.06,53.54 439.33,53.55 439.6,53.55 439.87,53.56 440.13,53.57 440.4,53.57 440.67,53.58 440.94,53.59 441.21,53.61 441.48,53.62 441.75,53.64 442.02,53.65 442.29,53.67 442.56,53.68 442.83,53.69 443.1,53.7 443.37,53.73 443.64,53.77 443.91,53.8 444.18,53.82 444.45,53.83 444.71,53.84 444.98,53.84 445.25,53.85 445.52,53.88 445.79,53.9 446.06,53.91 446.33,53.9 446.6,53.91 446.87,53.93 447.14,53.94 447.41,53.94 447.68,53.95 447.95,53.97 448.22,54 448.49,54.04 448.76,54.07 449.03,54.1 449.29,54.14 449.56,54.16 449.83,54.18 450.1,54.19 450.37,54.22 450.64,54.27 450.91,54.33 451.18,54.37 451.45,54.38 451.72,54.38 451.99,54.39 452.26,54.44 452.53,54.48 452.8,54.51 453.07,54.53 453.34,54.55 453.61,54.59 453.87,54.63 454.14,54.67 454.41,54.71 454.68,54.75 454.95,54.78 455.22,54.81 455.49,54.85 455.76,54.9 456.03,54.94 456.3,54.97 456.57,55.01 456.84,55.07 457.11,55.15 457.38,55.24 457.65,55.3 457.92,55.34 458.19,55.37 458.45,55.41 458.72,55.45 458.99,55.5 459.26,55.57 459.53,55.65 459.8,55.75 460.07,55.86 460.34,55.98 460.61,56.1 460.88,56.21 461.15,56.3 461.42,56.36 461.69,56.4 461.96,56.46 462.23,56.54 462.5,56.65 462.77,56.79 463.03,56.94 463.3,57.1 463.57,57.24 463.84,57.38 464.11,57.52 464.38,57.66 464.65,57.8 464.92,57.93 465.19,58.08 465.46,58.25 465.73,58.46 466,58.71 466.27,58.96 466.54,59.2 466.81,59.43 467.08,59.69 467.34,60 467.61,60.32 467.88,60.66 468.15,61.02 468.42,61.38 468.69,61.77 468.96,62.21 469.23,62.73 469.5,63.32 469.77,63.96 470.04,64.64 470.31,65.41 470.58,66.31 470.85,67.43 471.12,68.84 471.39,70.63 471.66,73.1 471.92,77.04 472.19,83.7 472.46,93.9 472.73,105.85 473,113.89 473.27,112.11 473.54,100.63 473.81,86.32 474.08,75.26 474.35,68.87 474.62,65.66 474.89,63.98 475.16,62.87 475.43,61.97 475.7,61.22 475.97,60.59 476.24,60.07 476.5,59.61 476.77,59.23 477.04,58.94 477.31,58.74 477.58,58.57 477.85,58.38 478.12,58.14 478.39,57.88 478.66,57.64 478.93,57.44 479.2,57.26 479.47,57.09 479.74,56.92 480.01,56.76 480.28,56.64 480.55,56.58 480.82,56.54 481.08,56.49 481.35,56.4 481.62,56.3 481.89,56.2 482.16,56.11 482.43,56.02 482.7,55.93 482.97,55.85 483.24,55.79 483.51,55.74 483.78,55.68 484.05,55.62 484.32,55.54 484.59,55.47 484.86,55.42 485.13,55.39 485.4,55.36 485.66,55.32 485.93,55.28 486.2,55.25 486.47,55.22 486.74,55.19 487.01,55.14 487.28,55.07 487.55,55 487.82,54.93 488.09,54.89 488.36,54.88 488.63,54.86 488.9,54.83 489.17,54.8 489.44,54.78 489.71,54.78 489.98,54.77 490.24,54.74 490.51,54.69 490.78,54.65 491.05,54.6 491.32,54.57 491.59,54.55 491.86,54.53 492.13,54.52 492.4,54.5 492.67,54.48 492.94,54.46 493.21,54.44 493.48,54.43 493.75,54.42 494.02,54.4 494.29,54.37 494.56,54.33 494.82,54.29 495.09,54.25 495.36,54.24 495.63,54.24 495.9,54.25 496.17,54.25 496.44,54.23 496.71,54.2 496.98,54.17 497.25,54.17 497.52,54.16 497.79,54.14 498.06,54.12 498.33,54.11 498.6,54.12 498.87,54.12 499.13,54.11 499.4,54.09 499.67,54.06 499.94,54.03 500.21,54.02 500.48,54 500.75,53.98 501.02,53.96 501.29,53.95 501.56,53.94 501.83,53.94 502.1,53.94 502.37,53.94 502.64,53.93 502.91,53.9 503.18,53.88 503.45,53.87 503.71,53.87 503.98,53.88 504.25,53.9 504.52,53.9 504.79,53.89 505.06,53.86 505.33,53.82 505.6,53.8 505.87,53.79 506.14,53.78 506.41,53.76 506.68,53.74 506.95,53.73 507.22,53.72 507.49,53.71 507.76,53.71 508.03,53.71 508.29,53.71 508.56,53.71 508.83,53.71 509.1,53.71 509.37,53.7 509.64,53.68 509.91,53.66 510.18,53.64 510.45,53.63 510.72,53.63 510.99,53.64 511.26,53.63 511.53,53.62 511.8,53.61 512.07,53.61 512.34,53.61 512.61,53.62 512.87,53.62 513.14,53.63 513.41,53.63 513.68,53.62 513.95,53.6 514.22,53.57 514.49,53.55 514.76,53.53 515.03,53.52 515.3,53.51 515.57,53.5 515.84,53.51 516.11,53.52 516.38,53.53 516.65,53.54 516.92,53.53 517.19,53.52 517.45,53.52 517.72,53.52 517.99,53.52 518.26,53.52 518.53,53.51 518.8,53.5 519.07,53.49 519.34,53.48 519.61,53.48 519.88,53.48 520.15,53.47 520.42,53.47 520.69,53.47 520.96,53.47 521.23,53.46 521.5,53.46 521.77,53.45 522.03,53.44 522.3,53.44 522.57,53.44 522.84,53.43 523.11,53.43 523.38,53.42 523.65,53.42 523.92,53.41 524.19,53.41 524.46,53.42 524.73,53.43 525,53.43 525.27,53.43 525.54,53.43 525.81,53.42 526.08,53.42 526.35,53.42 526.61,53.4 526.88,53.39 527.15,53.37 527.42,53.36 527.69,53.36 527.96,53.36 528.23,53.36 528.5,53.36 528.77,53.35 529.04,53.35 529.31,53.35 529.58,53.36 529.85,53.36 530.12,53.36 530.39,53.35 530.66,53.35 530.92,53.34 531.19,53.34 531.46,53.35 531.73,53.35 532,53.34 532.27,53.34 532.54,53.34 532.81,53.35 533.08,53.35 533.35,53.35 533.62,53.34 533.89,53.33 534.16,53.33 534.43,53.32 534.7,53.32 534.97,53.31 535.24,53.31 535.5,53.31 535.77,53.31 536.04,53.31 536.31,53.31 536.58,53.31 536.85,53.3 537.12,53.29 537.39,53.28 537.66,53.27 537.93,53.27 538.2,53.27 538.47,53.28 538.74,53.28 539.01,53.27 539.28,53.27 539.55,53.27 539.82,53.27 540.08,53.26 540.35,53.26 540.62,53.26 540.89,53.26 541.16,53.27 541.43,53.27 541.7,53.27 541.97,53.26 542.24,53.26 542.51,53.26 542.78,53.26 543.05,53.27 543.32,53.27 543.59,53.28 543.86,53.28 544.13,53.27 544.4,53.26 544.66,53.26 544.93,53.25 545.2,53.25 545.47,53.25 545.74,53.25 546.01,53.25 546.28,53.25 546.55,53.25 546.82,53.25 547.09,53.25 547.36,53.24 547.63,53.24 547.9,53.24 548.17,53.25 548.44,53.25 548.71,53.24 548.98,53.23 549.24,53.22 549.51,53.21 549.78,53.21 550.05,53.22 550.32,53.23 550.59,53.23 550.86,53.24 551.13,53.23 551.4,53.23 551.67,53.22 551.94,53.22 552.21,53.21 552.48,53.21 552.75,53.19 553.02,53.17 553.29,53.14 553.56,53.11 553.82,53.09 554.09,53.08 554.36,53.08" stroke-dasharray="none" stroke="rgb(31,120,180)" stroke-width="0.75" opacity="1" stroke-opacity="1" fill="none" class="aqm2" onclick="plotObjRespond('click', 2, 'dens')" onmouseover="plotObjRespond('show', 2, 'dens')" onmouseout="plotObjRespond('hide', 2, 'dens')"/>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.panel.3.1.off.vp.2">
+          <g id="Fig:densplot_01.border.panel.3.1.1">
+            <rect id="Fig:densplot_01.border.panel.3.1.1.1" x="407.06" y="42.19" width="156.94" height="177.41" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-width="0.75" opacity="1" fill="none" stroke-opacity="1" fill-opacity="0"/>
+          </g>
+        </g>
+        <g id="Fig:densplot_01.strip.3.1.vp.1">
+          <defs>
+            <clipPath id="Fig:densplot_01.strip.default.1.3.clipPath">
+              <rect x="407.06" y="219.6" width="156.94" height="14.4" fill="none" stroke="none"/>
+            </clipPath>
+          </defs>
+          <g id="Fig:densplot_01.strip.default.1.3" clip-path="url(#Fig:densplot_01.strip.default.1.3.clipPath)">
+            <g id="Fig:densplot_01.bg.strip.3.1.1">
+              <rect id="Fig:densplot_01.bg.strip.3.1.1.1" x="407.06" y="219.6" width="156.94" height="14.4" fill="rgb(204,230,255)" stroke="rgb(204,230,255)" stroke-opacity="1" fill-opacity="1"/>
+            </g>
+            <g id="Fig:densplot_01.textr.strip.3.1.1">
+              <g id="Fig:densplot_01.textr.strip.3.1.1.1" transform="translate(447.85, 226.8)" stroke-width="0.1">
+                <g id="Fig:densplot_01.textr.strip.3.1.1.1.scale" transform="scale(1, -1)">
+                  <text x="0" y="0" id="Fig:densplot_01.textr.strip.3.1.1.1.text" text-anchor="start" stroke="rgb(0,0,0)" opacity="1" fill="rgb(0,0,0)" stroke-opacity="1" fill-opacity="1" font-size="12" font-weight="normal" font-style="normal">
+                    <tspan id="Fig:densplot_01.textr.strip.3.1.1.1.tspan.1" dy="4.31" x="0">c. Log2(Ratio)</tspan>
+                  </text>
+                </g>
+              </g>
+            </g>
+          </g>
+          <g id="Fig:densplot_01.strip.default.off.1.3">
+            <g id="Fig:densplot_01.border.strip.3.1.1">
+              <rect id="Fig:densplot_01.border.strip.3.1.1.1" x="407.06" y="219.6" width="156.94" height="14.4" stroke="rgb(0,0,0)" stroke-dasharray="none" stroke-width="0.75" opacity="1" fill="none" stroke-opacity="1" fill-opacity="0"/>
+            </g>
+          </g>
+        </g>
+        <g id="Fig:densplot_01..1"/>
+      </g>
+    </g>
+  </g>
+</svg>
