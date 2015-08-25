@@ -13,4 +13,4 @@ vignettes/*.html
 vignettes/*.pdf
 
 # Html
-*.html
+/index.html
