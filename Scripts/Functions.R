@@ -531,35 +531,30 @@ t.test.all.genes <- function(x,s1,s2){
 WriteResults <- function(fit, coefs, eset){
 
 	for (i in 1:length(coefs)) {
-		exprs <- topTable(fit2, adjust="fdr", coef=coefs[i], p.value = 0.05, 
-				genelist=eset$genes, number=Inf, sort.by='logFC')
+		exprs <- topTable(fit2, adjust="fdr", coef=coefs[i], p.value = 0.05, genelist=eset$genes, number=Inf, sort.by='logFC')
 		rownames(exprs) <- NULL
 		exprs$Regulation <- evaluate.exprs(exprs$logFC)
 		up = subset(exprs, exprs$Regulation=='Up')
 		up = up[with(up, order(adj.P.Val)), ]
 		down = subset(exprs, exprs$Regulation=='Down')
 		down = down[with(down, order(adj.P.Val)), ]
+		up <- up[,c(7,8,9,10,16)]
+		down <- down[,c(7,8,9,10,16)]
 
 		#Up regulated probes
-		write.table(up$ProbeName, file=paste(coefs[i],' Up ProbeName.txt'), sep="\t", 
-					quote=FALSE, row.names=FALSE)
-		write.table(unique(up$GeneName), file=paste(coefs[i], 'Up GeneName.txt'), sep="\t", 
-					quote=FALSE, row.names=FALSE)
-		write.table(unique(up$GeneName), file=paste(coefs[i], 'Up SystematicName.txt'), sep="\t", 
-					quote=FALSE, row.names=FALSE)
+		write.table(up$ProbeName, file=paste(coefs[i],'up_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+		write.table(unique(up$GeneName), file=paste(coefs[i], 'Up GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+		write.table(unique(up$GeneName), file=paste(coefs[i], 'Up SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
 		#Down regulated probes
-		write.table(down$ProbeName, file=paste(coefs[i],' Down ProbeName.txt'), sep="\t", 
-					quote=FALSE, row.names=FALSE)
-		write.table(unique(down$GeneName), file=paste(coefs[i], 'Down GeneName.txt'), sep="\t", 
-					quote=FALSE, row.names=FALSE)
-		write.table(unique(down$GeneName), file=paste(coefs[i], 'Down SystematicName.txt'), sep="\t", 
-					quote=FALSE, row.names=FALSE)
+		write.table(down$ProbeName, file=paste(coefs[i],' Down ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+		write.table(unique(down$GeneName), file=paste(coefs[i], 'Down GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+		write.table(unique(down$GeneName), file=paste(coefs[i], 'Down SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
 		#Up, Down and All
-		write.table(up, file=paste(coefs[i], ' Up Regulated.txt') , sep="\t", quote=FALSE, row.names=FALSE)
-		write.table(down, file=paste(coefs[i], 'Down Regulated.txt'), sep="\t", quote=FALSE, row.names=FALSE)
-		write.table(exprs, file=paste(coefs[i], 'All genes.txt'), sep="\t", quote=FALSE, row.names=FALSE)
+		write.table(up, file=paste(coefs[i], ' Up_Regulated.txt',sep='_') , sep="\t", quote=FALSE, row.names=FALSE)
+		write.table(down, file=paste(coefs[i], 'Down_Regulated.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE)
+		write.table(exprs, file=paste(coefs[i], 'Complete_Results.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE)
 
 	}
 	
