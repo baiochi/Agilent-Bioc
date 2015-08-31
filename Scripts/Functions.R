@@ -334,7 +334,7 @@ cor.matrix <- function(dat, title="Correlation Matrix", save=FALSE){
 		png(filename=paste(title, ".png", sep = ""))
 		par(oma = c(0, 0, 3, 0))
 		image(dat.cor,axes=F)
-		axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]])
+		axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]],las=2)
 		axis(3,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]])
 		mtext(title, outer = TRUE, cex = 1.5)
 		dev.off()
@@ -342,7 +342,7 @@ cor.matrix <- function(dat, title="Correlation Matrix", save=FALSE){
 	else{
 		par(oma = c(0, 0, 3, 0))
 		image(dat.cor,axes=F)
-		axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]])
+		axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]],las=2)
 		axis(3,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]])
 		mtext(title, outer = TRUE, cex = 1.5)
 	}
