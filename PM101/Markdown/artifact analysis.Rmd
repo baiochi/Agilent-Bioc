@@ -1,0 +1,274 @@
+---
+title: "Possible background artifact on arrays"
+author: "João Baiochi, baiochi@usp.br"
+date: "August 29, 2015"
+output: 
+  html_document: 
+    theme: flatly
+    toc: true
+    highlight: tango
+---
+
+```{r Pre Processing, echo=FALSE, warning=FALSE, results='hide'}
+library(limma)
+library(knitr)
+source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
+targets <- read.table(file="/Users/Baiochi/Dropbox/USP/Lab/RawData/HCT/Targets.txt", header=TRUE, sep="\t", stringsAsFactors=FALSE)
+raw = read.maimages(targets$FileName, source="agilent", green.only=TRUE, path="/Users/Baiochi/Dropbox/USP/Lab/RawData/HCT")
+colnames(raw$E) <- targets$Nomeclature
+colnames(raw$Eb) <- targets$Nomeclature
+rownames(raw$targets) <- targets$Nomeclature
+#setup printer
+raw$genes$Block <- 1
+names(raw$genes)[2] <- "Column"
+raw$printer <- getLayout(raw$genes)
+r <- raw$genes$Row
+c <- raw$genes$Col
+nr <- max(r)
+nc <- max(c)
+y <- rep(NA,nr*nc)
+j <- (r-1)*nc+c
+#y[j] <- log2(raw$E[,1])
+#imageplot(y,raw$printer)
+# Normal analysis
+bgc = backgroundCorrect(raw,method='normexp')
+norm = normalizeBetweenArrays(bgc,method='quantile')
+eset = norm[norm$genes$ControlType==0,]
+eset = avereps(eset,ID=eset$genes[,"SystematicName"])
+f <- factor(targets$Condition, levels = unique(targets$Condition))
+design = model.matrix(~0 + f)
+colnames(design) <- levels(f)
+fit <- lmFit(eset$E, design)
+contrast.matrix = makeContrasts(contrasts='PM101-Ctr', levels=design)
+fit <- contrasts.fit(fit, contrast.matrix)
+fit <- eBayes(fit)
+rank <- decideTests(fit,method="separate",adjust.method="fdr",p.value=0.05,lfc=0)
+exprs = topTable(fit, adjust="fdr", coef='PM101-Ctr', genelist=eset$genes, number=Inf)
+# Filtered Analysis
+rawf <-raw
+rawf$Eb[which(raw$Eb[,3]>60),3] <- round(mean(raw$Eb[,3]))
+rawf$Eb[which(raw$Eb[,6]>60),6] <- round(mean(raw$Eb[,6]))
+#rawf <- raw[ which(!(raw$Eb[,3]>60 | raw$Eb[,6]>60)) ,]
+bgc2 = backgroundCorrect(rawf,method='normexp')
+norm2 = normalizeBetweenArrays(bgc2,method='quantile')
+eset2 = norm2[norm2$genes$ControlType==0,]
+eset2 = avereps(eset2,ID=eset2$genes[,"SystematicName"])
+fit2 <- lmFit(eset2$E, design)
+contrast.matrix = makeContrasts(contrasts='PM101-Ctr', levels=design)
+fit2 <- contrasts.fit(fit2, contrast.matrix)
+fit2 = eBayes(fit2)
+rank2 = decideTests(fit2,method="separate",adjust.method="fdr",p.value=0.05,lfc=0)
+exprs2 = topTable(fit2, adjust="fdr", coef='PM101-Ctr', genelist=eset2$genes, number=Inf)
+```
+
+#Introduction
+
+Background intensities from array 3 and 6 (labeled `PM101_3` and `Ctr_3`), which is from the same cell culture, have some probes with high values if compared to the other arrays. This can be considered an artifact due some random techinical problem.
+
+In order to check the impact of this possible artifact, two types of analysis will be made and compared:
+  
+* Using all the probes  
+* Filtering possible artifact spots. Each of these probes which background intesities are very higher will be replaced by the mean of their respective array
+
+
+```{r}
+kable(summary(raw$Eb), align='l', caption='Summary of the raw background signal')
+```
+
+***  
+
+#Arrays visualization
+
+  To see the image intensities from the arrays, values will be log2 transformed to a better visualization.
+
+```{r Image Plot, fig.cap='Array images'}
+par(mfrow=c(2,3))
+for(i in 1:6){
+  y[j] <- log2(raw$Eb[,i])
+  imageplot(y, raw$printer)
+}
+```
+
+  The very britgher spots on arrays 3 and 6 hide the true signal, we can see the difference if these probes are filtered.
+
+```{r Image Plot2, fig.cap='Array images - filtered probes'}
+par(mfrow=c(2,3))
+for(i in 1:6){
+  y[j] <- log2(rawf$Eb[,i])
+  imageplot(y, raw$printer)
+}
+```
+
+***  
+  The max intensity value excluding these two arrays is 60, so we can see how many probes are highly expressed.
+
+```{r , caption="Array 3"}
+array3 <- raw[which(raw$Eb[,3]>60),]
+table <- as.data.frame(cbind(array3$Eb[,3], array3$genes$GeneName,array3$genes$SystematicName))
+colnames(table) <- c('Intensity', 'GeneName','SystematicName')
+rownames(table) <- NULL
+kable(table, caption='Array 3')
+```
+  
+**Array PM101_3** have `r dim(array3)[1]` possible outlier probes
+***  
+```{r , caption='Array 6'}
+array6 <- raw[which(raw$Eb[,6]>60),]
+table <- as.data.frame(cbind(array6$Eb[,6], array6$genes$GeneName,array6$genes$SystematicName))
+colnames(table) <- c('Intensity', 'GeneName','SystematicName')
+rownames(table) <- NULL
+kable(table, caption='Array 6')
+```
+  
+**Array Ctr_3** have `r dim(array6)[1]` possible outlier probes
+***  
+And then see the p.values from these genes(in the not filtered analysis)
+```{r}
+out <- raw[ which(raw$Eb[,3]>60 | raw$Eb[,6]>60) ,]
+artifact <- exprs[which(exprs$SystematicName %in% out$genes$SystematicName),]
+rownames(artifact) <- NULL
+kable(artifact[,c(9, 8, 16)]) #columns: SystematicName, GeneName and adj.P.Value
+```
+  
+  As we can see, the only genes which has been ranked differentialy expressed is **NUMBL** and **BMPR1A** (adj.p.value < 0.05).
+ 
+***  
+
+#Analysis pipeline
+  The following methods were used to perform both of the analysis:
+
+**Background correction** using the method `normexp`:
+```{r, eval=FALSE, results='hide', warning=FALSE}
+bgc <- backgroundCorrect(raw,method='normexp')
+```
+
+**Normalization between the arrays** using the `quantile` method:
+```{r, eval=FALSE, results='hide', warning=FALSE}
+norm <- normalizeBetweenArrays(bgc,method='quantile')
+```
+**Filtering control probes**:
+```{r, eval=FALSE, results='hide', warning=FALSE}
+eset <- norm[norm$genes$ControlType==0,]
+```
+**Averagin replicated probes**:
+```{r, eval=FALSE, results='hide', warning=FALSE}
+eset <- avereps(eset,ID=eset$genes[,"SystematicName"])
+```
+**Create the linear model**:
+```{r, eval=FALSE, results='hide', warning=FALSE}
+f <- factor(targets$Condition, levels = unique(targets$Condition))
+design <- model.matrix(~0 + f)
+colnames(design) <- levels(f)
+contrast.matrix <- makeContrasts(contrasts='PM101-Ctr', levels=design)
+fit <- lmFit(eset$E, design)
+```
+**Compute empirical bayes statistics**:
+```{r, eval=FALSE, results='hide', warning=FALSE}
+fit2 <- contrasts.fit(fit, contrast.matrix)
+fit2 <- eBayes(fit2)
+```
+
+***  
+
+### Foreground vs Background Plot
+**All Probes**    
+```{r, echo=FALSE, fig.width=9}
+par(mfrow=c(2,3))
+for(i in 1:6)
+  plotFB(raw, array=i)
+```
+  
+**Filtered Probes**   
+```{r, echo=FALSE, fig.width=9}
+par(mfrow=c(2,3))
+for(i in 1:6)
+  plotFB(rawf, array=i)
+```
+
+***  
+
+### Raw Data Foreground Boxplot
+
+Boxplot of the foregrounds intensities have no change
+```{r, echo=FALSE, fig.width=9, fig.align='center'}
+boxplot(log2(raw$E), main='Foreground Boxplot', col='firebrick2')
+```
+
+### Raw Data Background Boxplot
+
+```{r, echo=FALSE, fig.width=9}
+par(mfrow=c(1,2))
+boxplot(log2(raw$Eb), main='Background Boxplot - All Probes', col='deepskyblue3')
+boxplot(log2(rawf$Eb), main='Background Boxplot - Filtered Probes', col='forestgreen')
+```
+
+### Background Corrected Boxplot
+
+```{r, echo=FALSE, fig.width=9}
+par(mfrow=c(1,2))
+boxplot(log2(bgc$E), main='Background Corrected Boxplot - All Probes', col='deepskyblue3')
+boxplot(log2(bgc2$E), main='Background Corrected Boxplot - Filtered Probes', col='forestgreen')
+```
+
+### Post-Normalized Boxplot
+The normalized boxplot is quite different between the analysis, the second diminishes the number of outliers values.
+```{r, echo=FALSE, fig.width=9}
+par(mfrow=c(1,2))
+boxplot(norm$E, main='Normalized Boxplot - All Probes', col='deepskyblue3')
+boxplot(norm2$E, main='Normalized Boxplot - Filtered Probes', col='forestgreen')
+```
+
+***  
+
+### Densities Plots
+```{r, echo=FALSE, warning=FALSE, fig.width=10}
+par(mfrow=c(1,3))
+plotDensities(raw, legend = 'topright', main='Raw Foreground densities - All Probes')
+plotDensities(bgc, legend = 'topright', main='Raw Background densities - All Probes')
+plotDensities(eset, legend = 'topright', main='Post-Normalized densities - All Probes')
+```
+```{r, echo=FALSE, warning=FALSE, fig.width=10}
+par(mfrow=c(1,3))
+plotDensities(rawf, legend = 'topright', main='Raw Foreground densities - Filtered Probes')
+plotDensities(bgc2, legend = 'topright', main='Raw Background densities - Filtered Probes')
+plotDensities(eset2, legend = 'topright', main='Post-Normalized densities - Filtered Probes')
+```
+
+***  
+
+# Differential Expression
+
+We can see the difference between the two analysis.
+**All Probes**
+Up regulated: `r as.numeric(table(rank)[3])`
+Down regulated: `r as.numeric(table(rank)[1])`
+
+**Filtered Probes**
+Up regulated: `r as.numeric(table(rank2)[3])`
+Down regulated: `r as.numeric(table(rank2)[1])`
+  
+###Volcanoplots
+
+
+```{r, eval=FALSE}
+par(mfrow=c(1,2))
+volcanoplot(exprs$logFC, exprs$adj.P.Val, rank, title='PM101-Ctr All Probes')
+volcanoplot(exprs2$logFC, exprs2$adj.P.Val, rank2, title='PM101-Ctr Filtered Probes')
+```
+
+```{r, echo=FALSE, fig.align='center', fig.height=9, fig.width=9}
+volcanoplot(exprs$logFC, exprs$adj.P.Val, rank, title='PM101-Ctr All Probes')
+```
+```{r, echo=FALSE, fig.align='center', fig.height=9, fig.width=9}
+volcanoplot(exprs2$logFC, exprs2$adj.P.Val, rank2, title='PM101-Ctr Filtered Probes')
+```
+
+diff <- exprs[exprs$adj.P.Val<0.05,]
+diff2 <- exprs2[exprs2$adj.P.Val<0.05,]
+
+From the design experiment with **all probes**, 
+table(diff2$ProbeName %in% diff$ProbeName)
+
+
+
+
