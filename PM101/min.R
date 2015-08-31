@@ -1,7 +1,7 @@
 # Minimal - PM101 Microarray analysis
 #load functions
 library(limma)
-source("/Users/Baiochi/Dropbox/USP/Lab/Agilent Bioc/Functions.R")
+source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
 
 #read targets
 targets <- read.table(file="/Users/Baiochi/Dropbox/USP/Lab/RawData/HCT/Targets.txt", header=TRUE, sep="\t", stringsAsFactors=FALSE)
