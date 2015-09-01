@@ -1,4 +1,4 @@
-# Minimal - PM101 Microarray analysis
+# Minimal - pre-miR101 Microarray analysis
 #load functions
 library(limma)
 source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
