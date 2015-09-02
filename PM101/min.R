@@ -1,4 +1,5 @@
-# Minimal - pre-miR101 Microarray analysis
+#Agilent - pre-miR101 Microarray analysis
+#Using Raw MeanSignal
 #load functions
 library(limma)
 source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")

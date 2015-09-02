@@ -225,7 +225,7 @@ histogram <- function (dat, title='Histogram' ,save=FALSE, ...){
 volcanoplot <- function(fc, pvalue, result, title="Volcano Plot", 
 						x="log Fold Change", y="-log(Adjusted P.value)", 
 						upcol="springgreen1", downcol="firebrick1", save=FALSE){
-	pvalue <- -log(pvalue)
+	pvalue <- -log2(pvalue)
 	result <- table(result)
 	if(save){
 		png(filename=paste(title, ".png", sep = ""))
@@ -689,7 +689,13 @@ getFasta <- function(exprs){
 }
 
 
-
+createTargetFile <- function(filename,conditions, replicates){
+	targets<- data.frame(FileName=filename,
+						Condition=conditions,
+						Sample=)
+	targets <- cbind(targets,Nomeclature=paste(targets$Condition,targets$Sample,sep="_"))
+	return(targets)
+}
 
 
 

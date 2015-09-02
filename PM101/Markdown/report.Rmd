@@ -2,11 +2,13 @@
 title: "Microarray Analysis pre-miR101"
 author: "João Baiochi, baiochi@usp.br"
 date: "August 27, 2015"
-output: 
+output:
+  pdf_document:
+    toc: yes
   html_document:
-    theme: flatly
-    toc: true
     highlight: tango
+    theme: flatly
+    toc: yes
 ---
 
 ```{r PreProcessing, echo=FALSE, warning=FALSE, results='hide'}
