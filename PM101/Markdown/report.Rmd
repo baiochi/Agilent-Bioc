@@ -192,6 +192,9 @@ design
 1. Calculate an "average" variance based on all the genes in the array(which will be more accurate because there is a lot of data);  
 2. For each gene, compute the sample variance;  
 3. Adjust that value towards the expected varriance that was computed from all genes.  
+  
+  
+P-values where adjust using False Discovery Rate correction(Benjamini & Hochberg)^[[Benjamini Y, Hochberg Y: Controlling the false discovery rate: a practical and powerful approach to multiple testing. J R Stat Soc B 1995, 57:289-300.](http://www.jstor.org/stable/pdf/2346101.pdf)]  
 
 ```{r eBayes}
 fit2 <- eBayes(fit2)
@@ -254,7 +257,8 @@ Results from differential expression can be accessed via the links above:
 - By [GeneName](https://www.dropbox.com/s/071d50kcvurt3v7/pre-miR101_Up%20GeneName.txt?dl=0)  
 - By [ProbeName](https://www.dropbox.com/s/wbmr6yyr2tf4dif/pre-miR101_Up_ProbeName.txt?dl=0)  
     
-[Complete table result](https://www.dropbox.com/s/gs7vtoyfqjpw1um/pre-miR101_Complete_Results.txt?dl=0)  
+[Complete table result](https://www.dropbox.com/s/gs7vtoyfqjpw1um/pre-miR101_Complete_Results.txt?dl=0)<small>(only genes with p.value <0.05)</small>  
+[Statistical]()<small>all genes</small>
   
 [R source](https://github.com/baiochi/Agilent-Bioc/blob/master/PM101/min.R) 
    
