@@ -21,30 +21,30 @@ RawPlots <- function(raw, x=2, y=3){
 	#pca.plot(raw, title="Sample PCA plot", save=TRUE)
 	densityplot(lograw, dim(lograw)[2], title="Raw log Density", save=TRUE)
 	MAPlot(raw, x, y, title = "Raw MA Plot", save=TRUE)
-	dev.off()
 }
 
-NormPlots <- function(eset){
+NormPlots <- function(eset, sn=1, rep=1){
 	cat('Plotting processed data.\n')
 	# if(!is(eset ,"EList"))
 	# 	stop('fit must be a \'MArrayLM\' ')
 	Boxplot(eset$E, title="Normalized Boxplot", color="deepskyblue3", save=TRUE)
-	densityplot(eset$E, dim(eset$E)[2], title="Normalized Density", save=TRUE)
-	MAPlot(eset, 2, 3, title = "Post-Normalization MvsA Plot", save=TRUE)
-	dev.off()
+	if(anyNA(eset$E)){
+		cat('\nExpression-set containg NA-values, unable to plot densities and MAPlot.\n')
+	}
+	else{
+		densityplot(eset$E, dim(eset$E)[2], title="Normalized Density", save=TRUE)
+		MAPlot(eset, sn, rep, title = "Post-Normalization MvsA Plot", save=TRUE)
+	}
 }
 
 #Diff Exprs Plots
-DiffExprsPlots <- function(fit, coefs, eset){
-
+DiffExprsPlots <- function(fit, coefs, rank, eset){
 	cat('Plotting statistical results.\n')
-
 	# if(!is(eset ,"EList"))
 	# 	stop('fit must be a \'MArrayLM\' ')
 	# if(!is(fit ,"MArrayLM"))
 	# 	stop('eset must be a \'EList\' ')
-
-	result = decideTests(fit, method="separate", adjust.method="fdr", p.value=0.05, lfc=0)
+	# result = decideTests(fit, method="separate", adjust.method="fdr", p.value=0.05, lfc=0)
 	for (i in 1:length(coefs)) {
 		exprs = topTable(fit, adjust="fdr", coef=coefs[i], genelist=eset$genes, number=Inf)
 		pval = exprs$P.Value
@@ -53,18 +53,13 @@ DiffExprsPlots <- function(fit, coefs, eset){
 		aveexprs = exprs$AveExpr
 
 		#Plotting
-		histogram(pval, title = paste(coefs[i],' P-Value Histogram'), 
-					save=TRUE, col="yellow", xlab='p-value')
-		histogram(fc, title = paste(coefs[i], ' Fold Change Histogram'), 
-					save=TRUE, col="firebrick2", xlab='log Fold Change')
-		histogram(adj.pval, title = paste(coefs[i], ' Adjusted P-value Histogram'), 
-					save=TRUE, col="royalblue", xlab='adjusted p-value')
-		histogram(aveexprs, title = paste(coefs[i], ' Average Expression Histogram'),
-					save=TRUE, col="mediumorchid4", xlab='average expression')
-		densityplot(exprs[,14:15],2, title=paste(coefs[i], ' P-values density'), save=TRUE)
-		volcanoplot(fc, adj.pval, result, title=paste(coefs[i], ' Volcanoplot'), save=TRUE)
+		histogram(pval, title = paste(coefs[i],' P-Value Histogram'), save=TRUE, col="yellow", xlab='p-value')
+		histogram(fc, title = paste(coefs[i], ' Fold Change Histogram'), save=TRUE, col="firebrick2", xlab='log Fold Change')
+		histogram(adj.pval, title = paste(coefs[i], ' Adjusted P-value Histogram'), save=TRUE, col="royalblue", xlab='adjusted p-value')
+		histogram(aveexprs, title = paste(coefs[i], ' Average Expression Histogram'), save=TRUE, col="mediumorchid4", xlab='average expression')
+		densityplot(exprs[,15:16],2, title=paste(coefs[i], ' P-values density'), save=TRUE)
+		volcanoplot(fc, adj.pval, rank, title=paste(coefs[i], ' Volcanoplot'), save=TRUE)
 	}
-	dev.off()
 }
 
 
@@ -528,35 +523,36 @@ t.test.all.genes <- function(x,s1,s2){
   return(out)
 }
 
-WriteResults <- function(fit, coefs, eset){
+WriteResults <- function(fit, coefs, eset, filename){
 
-	for (i in 1:length(coefs)) {
-		exprs <- topTable(fit2, adjust="fdr", coef=coefs[i], p.value = 0.05, genelist=eset$genes, number=Inf, sort.by='logFC')
-		rownames(exprs) <- NULL
-		exprs$Regulation <- evaluate.exprs(exprs$logFC)
-		up = subset(exprs, exprs$Regulation=='Up')
-		up = up[with(up, order(adj.P.Val)), ]
-		down = subset(exprs, exprs$Regulation=='Down')
-		down = down[with(down, order(adj.P.Val)), ]
-		up <- up[,c(7,8,9,10,16)]
-		down <- down[,c(7,8,9,10,16)]
+	comp <- topTable(fit2, adjust="fdr", coef=coefs, genelist=eset$genes, number=Inf, sort.by='logFC')
+	exprs <- topTable(fit2, adjust="fdr", coef=coefs, p.value = 0.05, genelist=eset$genes, number=Inf, sort.by='logFC')
+	rownames(exprs) <- NULL
+	exprs$Regulation <- evaluate.exprs(exprs$logFC)
+	up = subset(exprs, exprs$Regulation=='Up')
+	up = up[with(up, order(adj.P.Val)), ]
+	down = subset(exprs, exprs$Regulation=='Down')
+	down = down[with(down, order(adj.P.Val)), ]
+	up <- up[,c(7,8,9,15,16,4,10)]
+	down <- down[,c(7,8,9,15,16,4,10)]
 
-		#Up regulated probes
-		write.table(up$ProbeName, file=paste(coefs[i],'up_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-		write.table(unique(up$GeneName), file=paste(coefs[i], 'Up GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-		write.table(unique(up$GeneName), file=paste(coefs[i], 'Up SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	#Up regulated probes
+	write.table(up$ProbeName, file=paste(filename,'Up_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	write.table(unique(up$GeneName), file=paste(filename, 'Up_GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	write.table(unique(up$SystematicName), file=paste(filename, 'Up_SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
-		#Down regulated probes
-		write.table(down$ProbeName, file=paste(coefs[i],' Down ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-		write.table(unique(down$GeneName), file=paste(coefs[i], 'Down GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-		write.table(unique(down$GeneName), file=paste(coefs[i], 'Down SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	#Down regulated probes
+	write.table(down$ProbeName, file=paste(filename,'Down_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	write.table(unique(down$GeneName), file=paste(filename, 'Down_GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	write.table(unique(down$SystematicName), file=paste(filename, 'Down_SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
-		#Up, Down and All
-		write.table(up, file=paste(coefs[i], ' Up_Regulated.txt',sep='_') , sep="\t", quote=FALSE, row.names=FALSE)
-		write.table(down, file=paste(coefs[i], 'Down_Regulated.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE)
-		write.table(exprs, file=paste(coefs[i], 'Complete_Results.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE)
+	#Up, Down and All
+	write.table(up, file=paste(filename, 'Up_Regulated.txt',sep='_') , sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	write.table(down, file=paste(filename, 'Down_Regulated.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	write.table(exprs[,c(7,8,9,15,16,18,4,10)], file=paste(filename, 'All_genes.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
-	}
+	#Complete
+	write.table(comp, file=paste(filename, 'Complete_Statistical_Results.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
 	
 }
 
