@@ -56,18 +56,23 @@ exprs = topTable(fit2, adjust="fdr", coef='PM101-Ctr', genelist=eset$genes, numb
 rank = decideTests(fit2, method="separate", adjust.method="fdr", p.value=0.05, lfc=0)
 summary(rank)
 
+
+
+
+
+
 #-------------------Plots-------------------#
 #MvsA Plots
 par(mfrow=c(2,3))
 for(i in 1:6)
   plotMA(raw, array=i, main=paste('Array', i, '- Raw'))
 RawPlots(raw)
-NormPlots(eset)
+NormPlots(eset, sn=2, rep=3)
 DiffExprsPlots(fit2, 'PM101-Ctr', eset)
 
 #-------------------Results-------------------#
 #annotation
-WriteResults(fit2, 'PM101-Ctr', eset)
+WriteResults(fit2, 'PM101-Ctr', eset, 'miR-101')
 #Save R Data
 saveData(path='',raw,bgc,norm,eset,design,fit2,exprs)
 #Load Data
