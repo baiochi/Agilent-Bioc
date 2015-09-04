@@ -14,7 +14,6 @@ for (i in 1:6) {
   cat(paste('Reading', targets$FileName[i],'\n'))
   data[[i]] <- read.delim(file=targets$FileName[i], header=TRUE, skip=9, stringsAsFactors=FALSE)
 }
-
 #Create Expression set
 signal <- data.frame(numeric(45015))
 mean <- data.frame(numeric(45015))
@@ -25,22 +24,20 @@ for (i in 1:6){
   bg <- cbind(bg, data[[i]]$gBGMeanSignal)
 }
 aux <- data[[1]]
-genes <- aux[,c(9,10,11,12,13,14,15,16,37,38,39,40)]
+flag <- aux[,c(37,38,39,40)]
 rm(aux)
 signal <- signal[,-1]
+signal <- as.matrix(signal)
 mean <- mean[,-1]
 bg <- bg[,-1]
 colnames(signal) <- targets$Nomeclature
 colnames(mean) <- targets$Nomeclature
 colnames(bg) <- targets$Nomeclature
 
-rawdata <- new('EListRaw')
-rawdata$E <- signal
-rawdata$Eb <- bg
-rawdata$Raw <- mean
-rawdata$targets <- as.data.frame(targets$FileName, row.names=targets$Nomeclature)
-rawdata$genes <- genes
-rawdata$source <- 'agilent'
+raw = read.maimages(targets$FileName, source="agilent", green.only=TRUE, path="/Users/Baiochi/Dropbox/USP/Lab/RawData/HCT")
+raw$E <- signal
+raw$Raw <- mean
+raw$flag <- flag
 
 setwd(tempdir)
 
@@ -58,9 +55,9 @@ for(i in 9:12){
 #--------Start Analysis----------#
 
 #normalize
-norm = normalizeBetweenArrays(rawdata,method='quantile')
+norm = normalizeBetweenArrays(raw,method='quantile')
 #filter control probes
-eset = rawdata[rawdata$genes$ControlType==0,]
+eset = norm[norm$genes$ControlType==0,]
 #avg probes
 eset = avereps(eset,ID=eset$genes[,"SystematicName"])
 
@@ -82,4 +79,18 @@ exprs = topTable(fit2, adjust="fdr", coef='PM101-Ctr', genelist=eset$genes, numb
 rank = decideTests(fit2, method="separate", adjust.method="fdr", p.value=0.05, lfc=0)
 summary(rank)
 
-
+#-------------------Plots-------------------#
+#MvsA Plots
+par(mfrow=c(2,3))
+for(i in 1:6)
+  plotMA(raw, array=i, main=paste('Array', i, '- Raw'))
+RawPlots(raw)
+NormPlots(eset, sn=2, rep=3)
+DiffExprsPlots(fit2, 'PM101-Ctr', rank, eset)
+#-------------------Results-------------------#
+#annotation
+WriteResults(fit2, 'PM101-Ctr', eset, 'miR-101')
+#Save R Data
+saveData(path='/Users/Baiochi/Dropbox/USP/Lab/Results/pre-miR101/RData/',raw,bgc,norm,eset,design,fit2,exprs,rank)
+#Load Data
+loadData(path='/Users/Baiochi/Dropbox/USP/Lab/Results/pre-miR101/RData')
