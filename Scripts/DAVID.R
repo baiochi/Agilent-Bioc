@@ -64,3 +64,41 @@ writePathways <- function(genes, path='Pathway'){
 		write.xlsx(genes[[i]], file=paste(names(genes)[i],'.xlsx',sep=""), row.names=FALSE)
 	setwd(tempdir)
 }
+
+
+
+
+#-------------miRTarBase---------------#
+
+tarbase <- read.delim(file='Dropbox/USP/Lab/RawData/miRTarBase/hsa_MTI.txt', sep='\t',header=TRUE,stringsAsFactors=FALSE)
+tar_mir101 <- tarbase[grep('hsa-miR-101-',tarbase$miRNA),]
+
+#unique genes found on array matching tar database
+table(unique(exprs$GeneName) %in% tar_mir101$Target.Gene)
+FALSE  TRUE 
+28916   174 
+
+#all genes found on array matching tar database
+table(exprs$GeneName %in% tar_mir101$Target.Gene)
+FALSE  TRUE 
+32172   207 
+
+#Result Table: GeneName, ProbeName, Systematic Name, adj.P.Val, FC, Start, Sequence
+exprs$Regulation <- evaluate.exprs(exprs$logFC)
+genesFound <- exprs[which((exprs$GeneName %in% tar_mir101$Target.Gene)),c(8,7,9,15,16,18,3,4, 10)]
+genesFound <- genesFound[with(genesFound, order(adj.P.Val, Regulation)), ]
+rownames(genesFound) <- NULL
+
+table(genesFound$adj.P.Val<0.05)
+FALSE  TRUE 
+  120    87 
+
+tarUpGenes <- genesFound[which(genesFound$adj.P.Val<0.05 & genesFound$Regulation=='Up'),1]
+tarDownGenes <- genesFound[which(genesFound$adj.P.Val<0.05 & genesFound$Regulation=='Down'),1]
+
+write.table(genesFound , file='targets_mir101_TarBase.txt', sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+write.table(tarDownGenes , file='genelist_DOWN_mir101_TarBase.txt', sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+write.table(tarUpGenes , file='genelist_UP_mir101_TarBase.txt', sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+
+
+
