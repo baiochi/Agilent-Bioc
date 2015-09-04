@@ -68,12 +68,13 @@ for(i in 1:6)
   plotMA(raw, array=i, main=paste('Array', i, '- Raw'))
 RawPlots(raw)
 NormPlots(eset, sn=2, rep=3)
-DiffExprsPlots(fit2, 'PM101-Ctr', eset)
+DiffExprsPlots(fit2, 'PM101-Ctr', rank, eset)
 
 #-------------------Results-------------------#
 #annotation
 WriteResults(fit2, 'PM101-Ctr', eset, 'miR-101')
 #Save R Data
-saveData(path='',raw,bgc,norm,eset,design,fit2,exprs)
+saveData(path='/Users/Baiochi/Dropbox/USP/Lab/Results/pre-miR101/RData/',raw,bgc,norm,eset,design,fit2,exprs,rank)
 #Load Data
-loadData(path='')
+loadData(path='/Users/Baiochi/Dropbox/USP/Lab/Results/pre-miR101/RData')
+
