@@ -6,42 +6,15 @@ source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
 #read targets
 targets <- read.table(file="/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA//Targets.txt", header=TRUE, sep="\t", stringsAsFactors=FALSE)
 
-#read raw
-raw = read.maimages(targets$FileName, source="agilent", green.only=TRUE, path="/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA/")
-colnames(raw$E) <- targets$Nomeclature
-colnames(raw$Eb) <- targets$Nomeclature
-rownames(raw$targets) <- targets$Nomeclature
-#setup printer
-raw$genes$Block <- 1
-names(raw$genes)[2] <- "Column"
-raw$printer <- getLayout(raw$genes)
-r <- raw$genes$Row
-c <- raw$genes$Col
-nr <- max(r)
-nc <- max(c)
-y <- rep(NA,nr*nc)
-j <- (r-1)*nc+c
+#Read using ProcessedSignal
+raw <- readAFE(targets = targets, path = "/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA/", skip.lines =  0)
 
-#read ProcessedSignal from AFE
-tempdir <- getwd()
-setwd("/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA/")
-data <- new('list')
-for (i in 1:9) {
-  cat(paste('Reading', targets$FileName[i],'\n'))
-  data[[i]] <- read.delim(file=targets$FileName[i], header=TRUE, stringsAsFactors=FALSE)
-}
-signal <- data.frame(numeric(45015))
-for (i in 1:9) signal <- cbind(signal, data[[i]]$gProcessedSignal)
-aux <- data[[1]]
-flag <- aux[,c(37,38,39,40)]
-rm(aux)
-signal <- signal[,-1]
-signal <- as.matrix(signal)
-colnames(signal) <- targets$Nomeclature
-raw$E <- signal
-raw$flag <- flag
-setwd(tempdir)
-
+#Read using MedianSignal
+#raw = read.maimages(targets$FileName, source="agilent", green.only=TRUE, path="/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA/")
+#colnames(raw$E) <- targets$Nomeclature
+#colnames(raw$Eb) <- targets$Nomeclature
+#rownames(raw$targets) <- targets$Nomeclature
+#bgc correct bgc = backgroundCorrect(raw,method='normexp')
 
 #normalize
 norm = normalizeBetweenArrays(raw,method='quantile')
@@ -75,22 +48,63 @@ rank = decideTests(fit2, method="separate", adjust.method="fdr", p.value=0.05, l
 summary(rank)
 
 
+volcanoplot(fit2, 'iTreg-Naive',title='iTreg-Naive vs Control VolcanoPlot')
+volcanoplot(fit2, 'iTreg-Teff',title='iTreg-Teff vs Control VolcanoPlot')
+volcanoplot(fit2, 'Naive-Teff',title='Naive-Teff vs Control VolcanoPlot')
+
+#ProcessedSignal analysis
+#iTreg-Naive    iTreg-Teff Naive-Teff
+#-1        3229        630       2314
+#0        26006      30516      28273
+#1         3242       1331       1890
+
+#MedianSignal analysis
+#iTreg-Naive      #iTreg-Teff       #Teff-Naive
+#-1        2813   #-1        496    #-1       1816
+#0        26773   #0       30725    #0       28610
+#1         2891   #1        1256    #1        2051
+
+
+# Plots -------------------------------------------------------------------
+
+#Setup printer
+raw$genes$Block <- 1
+names(raw$genes)[2] <- "Column"
+raw$printer <- getLayout(raw$genes)
+r <- raw$genes$Row
+c <- raw$genes$Col
+nr <- max(r)
+nc <- max(c)
+y <- rep(NA,nr*nc)
+j <- (r-1)*nc+c
+#raw data visualization
+boxplot(log2(raw$E), main='Raw data Boxplot', col='forestgreen')
+hierclust(log2(raw$E), methdis="euclidean", methclu="complete", sel=FALSE, size=100)
+cor.matrix(log2(raw$E), title="Pearson Correlation Matrix")
+plotDensities(raw, legend = 'topright', main='Raw Foreground densities')
+par(mfrow=c(3,3))
+for(i in 1:9)
+  plotMA(raw, array=i, main=paste('Array', i, '- Raw'))
+
+#post-norm visualization
+boxplot(eset$E, main='Normalized Boxplot', col='deepskyblue2')
+plotDensities(eset, legend = 'topright', main='Normalized Foreground Densities')
+MAPlot(eset, 3, 3, title = "Post-Normalization MA Plot")
+
+#differential expression visualization
+plotSA(fit2)
+plotMA(fit2)
+volcanoplot(fit2, 'iTreg-Naive',title='iTreg-Naive vs Control VolcanoPlot')
+diffexprs.hist(exprs, coef='iTreg-Naive')
+volcanoplot(fit2, 'iTreg-Teff',title='iTreg-Teff vs Control VolcanoPlot')
+diffexprs.hist(exprs2, coef='iTreg-Teff')
+volcanoplot(fit2, 'Naive-Teff',title='Naive-Teff vs Control VolcanoPlot')
+diffexprs.hist(exprs3, coef='Naive-Teff')
 
 
 
-#normal analytsis
-#iTreg-Naive
-#-1        2813
-#0        26773
-#1         2891
-#iTreg-Teff
-#-1        496
-#0       30725
-#1        1256
-#Teff-Naive
-#-1       1816
-#0       28610
-#1        2051
+
+
 
 
 
