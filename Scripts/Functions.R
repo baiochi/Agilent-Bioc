@@ -108,24 +108,19 @@ saveAllPlots <- function(raw, eset, diffexprs, result){
 
 
 Boxplot <- function(exprs, title="Boxplot", color="white", save=FALSE){
-	if(save){
-		png(filename= paste(title, ".png", sep = ""))
-		boxplot(exprs,
-			names = colnames(exprs),
-			las=2,
-			ylab="Spot Intensity",
-			col = color,
-			main = title)
-	dev.off()
-	}
-	else{
-		boxplot(exprs,
-		names = colnames(exprs),
-		las=2,
-		ylab="Spot Intensity",
-		col = color,
-		main = title)
-	}
+  if(save){
+    png(filename= paste(title, ".png", sep = ""))
+    Boxplot <- function(exprs, title, color, save=FALSE)
+      dev.off()
+  }
+  else{
+    boxplot(exprs,
+            names = colnames(exprs),
+            las=2,
+            ylab="Spot Intensity",
+            col = color,
+            main = title)
+  }
 }
 
 densityplot <- function(exprs, samples, title="Density", save=FALSE){
@@ -133,14 +128,7 @@ densityplot <- function(exprs, samples, title="Density", save=FALSE){
 			"green3", "red3", "yellow3", "blue3", "purple3", "orange3")
 	if(save){
 		png(filename= paste(title, ".png", sep = ""))
-		plot(density(exprs[,1]), col=colors[1], main=title)
-		for (i in 1:samples) {
-			lines(density(exprs[,i]), col=colors[i])
-		}
-		legend("topright",
-			legend = colnames(exprs),
-			lty=c(1,1),
-			lwd=c(2.5,2.5),col=colors)
+		densityplot(exprs, samples, title, save=FALSE)
 		dev.off()
 	}
 	else{
@@ -160,12 +148,7 @@ distribuitionplot <- function(exprs, x, y, title="Distribuition", save=FALSE){
 		stop("Please input the plot dimensions(x = rows, y = cols.")
 	if(save){
 		png(filename=paste(title, ".png", sep = ""))
-		par(mfrow = c(x,y), oma = c(0, 0, 3, 0))
-		dim <- x*y
-		for (i in 1:dim) {
-			plot(exprs[,i], pch=16, cex=0.3, main=colnames(exprs)[i])
-		}
-		mtext(title, outer = TRUE, cex = 1.5)
+		distribuitionplot(exprs, x, y, title, save=FALSE)
 		dev.off()
 	}
 	else{
@@ -179,17 +162,11 @@ distribuitionplot <- function(exprs, x, y, title="Distribuition", save=FALSE){
 }
 
 MAPlot <- function(obj, x, y, title="MA Plot", save=FALSE){
-	if(missing(x) | missing(y))
-		stop("Please input the plot dimensions(x = rows, y = cols.")
-	
+  if(missing(x) | missing(y))
+    stop("Please input the plot dimensions(x = rows, y = cols.")
 	if(save){
 		png(filename=paste(title, ".png", sep = ""))
-		par(mfrow = c(x,y), oma = c(0, 0, 3, 0))
-		dim <- x*y
-		for (i in 1:dim) {
-			limma::plotMA(object = obj, array = i)
-		}
-		mtext(title, outer = TRUE, cex = 1.5)
+		MAplot(obj, x, y, title, save=FALSE)
 		dev.off()
 	}
 	else{
@@ -203,7 +180,6 @@ MAPlot <- function(obj, x, y, title="MA Plot", save=FALSE){
 }
 
 histogram <- function (dat, title='Histogram' ,save=FALSE, ...){
-	title <- 
 	if(save){
 		png(filename=paste(title, ".png", sep = ""))
 		hist(dat, main=title, ...)
@@ -214,72 +190,87 @@ histogram <- function (dat, title='Histogram' ,save=FALSE, ...){
 	}
 }
 
-# fc: foldchange
-# pvalue: p.value
+diffexprs.hist <- function(exprs, coef='', save=FALSE){
+  if(save){
+    png(filename=paste(title, ".png", sep = ""))
+    diffexprs.hist(exprs, coef, save=FALSE)
+    dev.off()
+  }
+  par(mfrow=c(2,2), oma = c(0, 0, 2, 0))
+  histogram(exprs$P.Value, title = 'P-Value Histogram', col="yellow", xlab='p-value')
+  histogram(exprs$adj.P.Val, title = 'Adjusted P-value Histogram', col="royalblue", xlab='Adjusted p-value')
+  histogram(exprs$logFC, title = ' Fold Change Histogram', col="firebrick2", xlab='log Fold Change', axes=FALSE)
+  axis(side=1, at=seq(round(min(exprs$logFC)),round(max(exprs$logFC)), by=2))
+  densityplot(cbind(P.value=exprs$P.Value, Adjusted.P.value=exprs$adj.P.Val),2,title='P-values density')
+  mtext(coef, outer = TRUE)
+}
 
-volcanoplot <- function(fc, pvalue, result, title="Volcano Plot", 
-						x="log Fold Change", y="-log(Adjusted P.value)", 
-						upcol="springgreen1", downcol="firebrick1", save=FALSE){
-	pvalue <- -log2(pvalue)
-	result <- table(result)
-	if(save){
-		png(filename=paste(title, ".png", sep = ""))
-		plot(x = fc, 
-			y = pvalue,
-		    ylab = y,
-		    xlab = x,
-		    main = title,
-		    pch = 20,
-		    col = "black")
-		#Add lines to visualize more significant genes
-		abline(v = 0)
-		abline(h = 3)
-		#Add green to up regulated genes and red to down regulated genes
-		points(fc[(pvalue>3 & fc>0)],
-	        pvalue[(pvalue>3 & fc>0)],
-	        col = upcol,
-	        pch = 20)
-		points(fc[(pvalue>3 & fc<0)],
-		    pvalue[(pvalue>3 & fc<0)],
-		    col = downcol,
-		    pch = 20)
-		legend("bottomleft",
-			legend = c(paste('Up-regulated:',result[3], sep=' '),
-						paste('Down-regulated:',result[1], sep=' ') ),
-			lty= 0,
-			# lwd=c(2.5,2.5),
-			pch = 20,
-			col=c('springgreen1','firebrick1'))
-		dev.off()
-	}
-	else{
-		plot(x = fc, 
-			y = pvalue,
-		    ylab = y,
-		    xlab = x,
-		    main = title,
-		    pch = 20,
-		    col = "black")
-		#Add lines to visualize more significant genes
-		abline(v = 0)
-		abline(h = 3)
-		#Add green to up regulated genes and red to down regulated genes
-		points(fc[(pvalue>3 & fc>0)],
-	        pvalue[(pvalue>3 & fc>0)],
-	        col = upcol,
-	        pch = 20)
-		points(fc[(pvalue>3 & fc<0)],
-		    pvalue[(pvalue>3 & fc<0)],
-		    col = downcol,
-		    pch = 20)
-		legend("bottomleft",
-			legend = c(paste('Up-regulated:',result[3], sep=' '),
-						paste('Down-regulated:',result[1], sep=' ') ),
-			lty= 0,
-			# lwd=c(2.5,2.5),
-			pch = 20,
-			col=c('springgreen1','firebrick1'))
-	}
+
+volcanoplot <- function(fit, coeff=NULL, hl =NULL, pval=0.05, fc=0, title="Volcano Plot", 
+                        x="log2 Fold Change", y="-log Adjusted P.value", 
+                        upcol="springgreen1", downcol="firebrick1", ab=FALSE, save=FALSE){
+  #pvalue <- -log(pvalue)
+  #plot(x = fc, y = pvalue,ylab = y,xlab = x,main = title,pch = 20,col = "black")
+  #points(fc[(pvalue>3 & fc>0.7)],pvalue[(pvalue>3 & fc>0.7)],col = upcol,pch = 20)
+  #points(fc[(pvalue>3 & fc< -0.7)],pvalue[(pvalue>3 & fc< -0.7)],col = downcol,pch = 20)
+  if(save){
+    pdf(file=paste(title, ".pdf", sep = ""))
+    volcanoplot(fit, coeff, hl, pval, fc, title, x, y, upcol, downcol, ab, save=FALSE)
+    dev.off()
+  }
+  else{
+    exprs = topTable(fit, adjust="fdr", coef=coeff, genelist=eset$genes, number=Inf)
+    diff = topTable(fit, adjust="fdr", coef=coeff, genelist=eset$genes, p.value=pval, lfc=fc,number=Inf)
+    rank = decideTests(fit, method="separate", adjust.method="fdr", p.value=pval, lfc=fc)
+    rank = table(rank)
+    Pval = -log(exprs$adj.P.Val)
+    FC = exprs$logFC
+    pval = -log(pval)
+    plot(x = FC, y = Pval,
+         ylab = y, xlab = x, main = title, pch = 20, col = "black", 
+         cex=.3, xlim=(c(-6, 4)), ylim=(c(0, 15)), cex.axis=0.9, cex.lab=0.9)
+    if(ab){
+      #Add lines to visualize more significant genes
+      abline(v = log(fc))
+      abline(v = -log(fc))
+      abline(h = pval)
+    }
+    #Add green to up regulated genes and red to down regulated genes
+    points(FC[(Pval>pval & FC>fc)],
+           Pval[(Pval>pval & FC>fc)],
+           col = upcol,pch = 20, cex=.3)
+    points(FC[(Pval>pval & FC< -fc)],
+           Pval[(Pval>pval & FC< -fc)],
+           col = downcol,pch = 20, cex=.3)
+    legend("bottomleft",
+           legend = c(paste('Up-regulated:',rank[3], sep=' '),
+                      paste('Down-regulated:',rank[1], sep=' ') ),
+           lty= 0,# lwd=c(2.5,2.5),
+           pch = 20, cex=1, col=c('springgreen1','firebrick1'))
+    if(!is.null(hl))
+      highlight(hl, diff)
+  }
+}
+
+#highlith transcripts from Volcanoplot
+highlight <- function(genes, exprs, by.gene=TRUE){
+  if(!by.gene)
+    listname <- exprs$SystematicName
+  else 
+    listname <- exprs$GeneName
+  for(i in 1:length(genes)){
+    g <- exprs[grep(paste('^',genes[i],'$',sep=''), listname),]
+    if(nrow(g)==0 | nrow(g)>1){
+      
+      cat(paste(genes[i],'transcript has duplicated instances, or none.\n'))
+    }
+    else{
+      if(g$logFC>0) p=4
+      else  p=2
+      text(x=g$logFC, y=-log(g$adj.P.Val), label=g$GeneName, pos=p, offset=0.2, cex=.75)
+      points(x=g$logFC, y=-log(g$adj.P.Val), pch=20, cex=.5, col='deepskyblue2')
+    }
+  }
 }
 
 # function (fit, coef = 1, highlight = 0, names = fit$genes$ID, 
@@ -343,7 +334,6 @@ cor.matrix <- function(dat, title="Correlation Matrix", save=FALSE){
 	}
 }
 
-
 # PCA Plot
 pca.plot <- function(dat, title="Sample PCA plot", save=FALSE){
 	dat.pca <- prcomp(t(dat))
@@ -381,7 +371,6 @@ cv.plot <- function(dat){
 	dat.cv <- dat.sd/dat.mean #calculate cv
 	plot(dat.mean,dat.cv,main="Sample CV vs. Mean",xlab="Mean",ylab="CV",col='blue',cex=1.5)
 }
-
 
 # # K-Means Clustering
 # kmean.clust <- function(dat){
@@ -508,8 +497,6 @@ ipak <- function(pkg){
     sapply(pkg, require, character.only = TRUE)
 }
 
-
-
 t.test.all.genes <- function(x,s1,s2){
   x1 <- x[s1]
   x2 <- x[s2]
@@ -523,10 +510,10 @@ t.test.all.genes <- function(x,s1,s2){
   return(out)
 }
 
-WriteResults <- function(fit, coefs, eset, filename){
+WriteResults <- function(fit, coefs, log=0, eset, filename, lists=FALSE){
 
-	comp <- topTable(fit2, adjust="fdr", coef=coefs, genelist=eset$genes, number=Inf, sort.by='logFC')
-	exprs <- topTable(fit2, adjust="fdr", coef=coefs, p.value = 0.05, genelist=eset$genes, number=Inf, sort.by='logFC')
+	comp <- topTable(fit, adjust="fdr", coef=coefs, genelist=eset$genes, number=Inf, sort.by='logFC')
+	exprs <- topTable(fit, adjust="fdr", coef=coefs, p.value = 0.05, lfc=log, genelist=eset$genes, number=Inf, sort.by='logFC')
 	rownames(exprs) <- NULL
 	exprs$Regulation <- evaluate.exprs(exprs$logFC)
 	up = subset(exprs, exprs$Regulation=='Up')
@@ -535,16 +522,18 @@ WriteResults <- function(fit, coefs, eset, filename){
 	down = down[with(down, order(adj.P.Val)), ]
 	up <- up[,c(7,8,9,15,16,12,4,10)]
 	down <- down[,c(7,8,9,15,12,16,4,10)]
-
-	#Up regulated probes
-	write.table(up$ProbeName, file=paste(filename,'Up_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-	write.table(unique(up$GeneName), file=paste(filename, 'Up_GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-	write.table(unique(up$SystematicName), file=paste(filename, 'Up_SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-
-	#Down regulated probes
-	write.table(down$ProbeName, file=paste(filename,'Down_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-	write.table(unique(down$GeneName), file=paste(filename, 'Down_GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-	write.table(unique(down$SystematicName), file=paste(filename, 'Down_SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+  
+	if(lists){
+	  #Up regulated probes
+	  write.table(up$ProbeName, file=paste(filename,'Up_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	  write.table(unique(up$GeneName), file=paste(filename, 'Up_GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	  write.table(unique(up$SystematicName), file=paste(filename, 'Up_SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	  
+	  #Down regulated probes
+	  write.table(down$ProbeName, file=paste(filename,'Down_ProbeName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	  write.table(unique(down$GeneName), file=paste(filename, 'Down_GeneName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	  write.table(unique(down$SystematicName), file=paste(filename, 'Down_SystematicName.txt',sep='_'), sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+	}
 
 	#Up, Down and All
 	write.table(up, file=paste(filename, 'Up_Regulated.txt',sep='_') , sep="\t", quote=FALSE, row.names=FALSE)
@@ -571,16 +560,8 @@ evaluate.exprs <- function(data){
   return(up.down[-1])
 }
 
-# Write Results
-write.results <- function(diff, filename){
-	diff <- subset(diff, diff$P.Value<0.05)
-	diff$Regulation <- evaluate.exprs(diff$logFC)
-	#df <- diff[, c(4,6,5,8,9,11,7,10,1,2,3)]
-	diff <- diff[ order(diff[,17], diff[,15]),]
-	write.table(diff, file=filename, sep="\t", quote=FALSE, row.names=FALSE)
-}
 
-saveData <- function(path, raw, bgc, norm, eset, design, fit2, exprs){
+saveData <- function(path, raw, bgc, norm, eset, design, fit2, exprs,rank){
 	tempdir <- getwd()
 	if(!file.exists(path))
 		stop('Invalid path\n.')
@@ -592,21 +573,22 @@ saveData <- function(path, raw, bgc, norm, eset, design, fit2, exprs){
 	save(design, file='design.rda')
 	save(fit2, file='fit2.rda')
 	save(exprs, file='exprs.rda')
+	save(rank, file='rank.rda')
 	setwd(tempdir)
 }
 
 loadData <- function(path){
-	tempdir <- getwd()
 	if(!file.exists(path))
 		stop('Invalid path\n.')
-	load(file='raw.rda')
-	load(file='bgc.rda')
-	load(file='norm.rda')
-	load(file='eset.rda')
-	load(file='design.rda')
-	load(file='fit2.rda')
-	load(file='exprs.rda')
-	setwd(tempdir)
+	load(file=paste(path,'raw.rda',sep='/'))
+	load(file=paste(path,'bgc.rda',sep='/'))
+	load(file=paste(path,'norm.rda',sep='/'))
+	load(file=paste(path,'eset.rda',sep='/'))
+	load(file=paste(path,'design.rda',sep='/'))
+	load(file=paste(path,'fit2.rda',sep='/'))
+	load(file=paste(path,'exprs.rda',sep='/'))
+	load(file=paste(path,'rank.rda',sep='/'))
+
 }
 
 #params: fn=function
@@ -684,7 +666,6 @@ getFasta <- function(exprs){
 	file
 }
 
-
 createTargetFile <- function(filename,conditions, replicates){
 	targets<- data.frame(FileName=filename,
 						Condition=conditions,
@@ -692,6 +673,47 @@ createTargetFile <- function(filename,conditions, replicates){
 	targets <- cbind(targets,Nomeclature=paste(targets$Condition,targets$Sample,sep="_"))
 	return(targets)
 }
+
+readAFE <- function(targets, path, skip.lines=0){
+  
+  #Read Files
+  tempdir <- getwd()
+  setwd(path)
+  data <- new('list')
+  for (i in 1:length(targets$FileName)) {
+    cat(paste('Reading', targets$FileName[i],'\n'))
+    data[[i]] <- read.delim(file=targets$FileName[i], header=TRUE, skip=skip.lines, stringsAsFactors=FALSE)
+  }
+  setwd(tempdir)
+  
+  #Extract ProcessedSignal and Flags
+  n <- dim(data[[1]])[1]
+  signal <- data.frame(numeric(n))
+  for (i in 1:length(targets$FileName)) signal <- cbind(signal, data[[i]]$gProcessedSignal)
+  signal <- signal[,-1]
+  signal <- as.matrix(signal)
+  flags <- data[[1]][,37:40]
+  
+  #Read using limma (easier to get the genes dataset)
+  raw = read.maimages(targets$FileName, source="agilent.mean", green.only=TRUE, path=path)
+  
+  #Adjust values
+  raw$mean <- raw$E
+  raw$flags <- flags
+  raw$E <- signal
+  colnames(raw$E) <- targets$Nomeclature
+  colnames(raw$Eb) <- targets$Nomeclature
+  colnames(raw$mean) <- targets$Nomeclature
+  
+  return(raw)
+}
+
+
+
+
+
+
+
 
 
 
