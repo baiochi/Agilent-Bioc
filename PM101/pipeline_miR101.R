@@ -10,7 +10,6 @@ targets <- read.table(file="/Users/Baiochi/Dropbox/USP/Lab/RawData/HCT/Targets.t
 #read raw
 raw = read.maimages(targets$FileName, source="agilent", green.only=TRUE, path="/Users/Baiochi/Dropbox/USP/Lab/RawData/HCT")
 colnames(raw$E) <- targets$Nomeclature
-colnames(raw$Eb) <- targets$Nomeclature
 rownames(raw$targets) <- targets$Nomeclature
 #correct artifacts
 raw$Eb[which(raw$Eb[,3]>60),3] <- round(mean(raw$Eb[,3]))
@@ -57,7 +56,11 @@ rank = decideTests(fit2, method="separate", adjust.method="fdr", p.value=0.05, l
 summary(rank)
 
 
-
+#draf
+mir <- raw$E[,1]
+ctr <- raw$E[,4]
+y = log2(mir/ctr)
+x = log2(sqrt(mir*ctr))
 
 
 
