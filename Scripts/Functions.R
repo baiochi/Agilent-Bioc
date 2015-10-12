@@ -214,21 +214,23 @@ volcanoplot <- function(fit, coeff=NULL, hl =NULL, pval=0.05, fc=0, title="Volca
   #points(fc[(pvalue>3 & fc>0.7)],pvalue[(pvalue>3 & fc>0.7)],col = upcol,pch = 20)
   #points(fc[(pvalue>3 & fc< -0.7)],pvalue[(pvalue>3 & fc< -0.7)],col = downcol,pch = 20)
   if(save){
-    pdf(file=paste(title, ".pdf", sep = ""))
+    png(file=paste(title, ".png", sep = ""))
     volcanoplot(fit, coeff, hl, pval, fc, title, x, y, upcol, downcol, ab, save=FALSE)
     dev.off()
   }
   else{
-    exprs = topTable(fit, adjust="fdr", coef=coeff, genelist=eset$genes, number=Inf)
-    diff = topTable(fit, adjust="fdr", coef=coeff, genelist=eset$genes, p.value=pval, lfc=fc,number=Inf)
+    exprs = topTable(fit, adjust="fdr", coef=coeff, number=Inf)
+    diff = topTable(fit, adjust="fdr", coef=coeff, p.value=pval, lfc=fc,number=Inf)
     rank = decideTests(fit, method="separate", adjust.method="fdr", p.value=pval, lfc=fc)
+    rank = rank[,colnames(rank)==coeff]
     rank = table(rank)
     Pval = -log(exprs$adj.P.Val)
     FC = exprs$logFC
     pval = -log(pval)
     plot(x = FC, y = Pval,
          ylab = y, xlab = x, main = title, pch = 20, col = "black", 
-         cex=.3, xlim=(c(-6, 4)), ylim=(c(0, 15)), cex.axis=0.9, cex.lab=0.9)
+         cex=.3, #xlim=(c(-6, 4)), ylim=(c(0, 15)), 
+         cex.axis=0.9, cex.lab=0.9)
     if(ab){
       #Add lines to visualize more significant genes
       abline(v = log(fc))
@@ -242,11 +244,11 @@ volcanoplot <- function(fit, coeff=NULL, hl =NULL, pval=0.05, fc=0, title="Volca
     points(FC[(Pval>pval & FC< -fc)],
            Pval[(Pval>pval & FC< -fc)],
            col = downcol,pch = 20, cex=.3)
-    legend("bottomleft",
+    legend("bottomright",
            legend = c(paste('Up-regulated:',rank[3], sep=' '),
                       paste('Down-regulated:',rank[1], sep=' ') ),
            lty= 0,# lwd=c(2.5,2.5),
-           pch = 20, cex=1, col=c('springgreen1','firebrick1'))
+           pch = 20, cex=0.75, col=c('springgreen1','firebrick1'))
     if(!is.null(hl))
       highlight(hl, diff)
   }
@@ -271,6 +273,32 @@ highlight <- function(genes, exprs, by.gene=TRUE){
       points(x=g$logFC, y=-log(g$adj.P.Val), pch=20, cex=.5, col='deepskyblue2')
     }
   }
+}
+
+
+
+Heatmap <- function (object, size, maintitle='HeatMap') {
+  require(marray)
+  require(gplots)
+  require(gtools)
+  require(gdata)
+  if(missing(size)) 
+    size = dim(object)[1]
+  samples = colnames(object)
+  names = rownames(object)
+  genes.var = apply(object, 1, var, na.rm = TRUE)
+  genes.var.select = order(genes.var, decreasing = TRUE)[1:size]
+  DD.s = object[genes.var.select, ]
+  samples = colnames(DD.s)
+  names = rownames(DD.s)
+  c <- rainbow(ncol(DD.s), start = 0, end = 0.3)
+  rc <- rainbow(nrow(DD.s), start = 0, end = 0.3)
+  rbg = maPalette(low = "green", high = "red", mid = "black", 
+                  k = 50)
+  heatmap.2(DD.s, labCol = samples, labRow = names, scale = "none", 
+            col = rbg, margin = c(10, 10), tracecol = "cyan")
+  subtitle = paste(as.character(size), " high variance genes")
+  title(main = maintitle, sub = subtitle)
 }
 
 # function (fit, coef = 1, highlight = 0, names = fit$genes$ID, 
@@ -390,6 +418,8 @@ cv.plot <- function(dat){
 hierclust <- function (object, methdis, methclu, sel, size, save=FALSE) 
 {
     samples = colnames(object)
+    if(missing(size))
+      size = dim(object)[1]
     if (sel == "TRUE") {
         genes.var = apply(object, 1, var)
         genes.var.select = order(genes.var, decreasing = TRUE)[1:size]
@@ -403,6 +433,10 @@ hierclust <- function (object, methdis, methclu, sel, size, save=FALSE)
         d <- as.dist(1 - cor(object, use = "complete.obs", method = methdis))
         title <- "Hierarchical Clustering - Pearson"
     }
+    if (methdis == "spearman") {
+      d <- as.dist(1 - cor(object, use = "complete.obs", method = methdis))
+      title <- "Hierarchical Clustering - Spearman"
+    }
     if (sel == "TRUE") {
         title <- paste(title, "\nhigh variance genes")
     }
@@ -412,13 +446,13 @@ hierclust <- function (object, methdis, methclu, sel, size, save=FALSE)
     dim <- dim(as.matrix(d))
     hc <- hclust(d, method = methclu)
     if(save){
-		png(filename=paste(title, ".png", sep = ""))
-		plot(hc, labels = samples, main = title)
-		dev.off()
-	}
-	else{
-		plot(hc, labels = samples, main = title)
-	}
+    	png(filename=paste(title, ".png", sep = ""))
+    	plot(hc, labels = samples, main = title)
+    	dev.off()
+	  }
+	  else{
+		  plot(hc, labels = samples, main = title)
+	  }
     
 }
 
@@ -674,7 +708,7 @@ createTargetFile <- function(filename,conditions, replicates){
 	return(targets)
 }
 
-readAFE <- function(targets, path, skip.lines=0){
+readAFE <- function(targets, path, value='PS',skip.lines=0){
   
   #Read Files
   tempdir <- getwd()
@@ -689,7 +723,12 @@ readAFE <- function(targets, path, skip.lines=0){
   #Extract ProcessedSignal and Flags
   n <- dim(data[[1]])[1]
   signal <- data.frame(numeric(n))
-  for (i in 1:length(targets$FileName)) signal <- cbind(signal, data[[i]]$gProcessedSignal)
+  if(value=='PS'){
+    for (i in 1:length(targets$FileName)) signal <- cbind(signal, data[[i]]$gProcessedSignal)
+  }
+  if(value=='TGS'){
+    for (i in 1:length(targets$FileName)) signal <- cbind(signal, data[[i]]$gTotalGeneSignal)
+  }
   signal <- signal[,-1]
   signal <- as.matrix(signal)
   flags <- data[[1]][,37:40]
