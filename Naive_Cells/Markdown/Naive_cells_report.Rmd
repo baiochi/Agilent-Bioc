@@ -1,7 +1,7 @@
 ---
-title: "Microarray Analysis pre-miR101"
+title: "Microarray Analysis Naive-iTregs cells"
 author: "João Baiochi, baiochi@usp.br"
-date: "August 27, 2015"
+date: "September 9, 2015"
 output:
   html_document:
     highlight: tango
@@ -16,11 +16,8 @@ library(limma)
 library(knitr)
 source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
 targets <- read.table(file="/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA//Targets.txt", header=TRUE, sep="\t",stringsAsFactors=FALSE)
-#read raw
-raw = read.maimages(targets$FileName, source="agilent", green.only=TRUE, path="/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA/")
-colnames(raw$E) <- targets$Nomeclature
-colnames(raw$Eb) <- targets$Nomeclature
-rownames(raw$targets) <- targets$Nomeclature
+#read from AFE ProcessedSignal
+raw <- readAFE(targets = targets, path = "/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA/", skip.lines =  0)
 #setup printer
 raw$genes$Block <- 1
 names(raw$genes)[2] <- "Column"
@@ -31,25 +28,6 @@ nr <- max(r)
 nc <- max(c)
 y <- rep(NA,nr*nc)
 j <- (r-1)*nc+c
-#read ProcessedSignal from AFE
-tempdir <- getwd()
-setwd("/Users/Baiochi/Dropbox/USP/Lab/RawData/Naive mRNA/")
-data <- new('list')
-for (i in 1:9) {
-  cat(paste('Reading', targets$FileName[i],'\n'))
-  data[[i]] <- read.delim(file=targets$FileName[i], header=TRUE, stringsAsFactors=FALSE)
-}
-signal <- data.frame(numeric(45015))
-for (i in 1:9) signal <- cbind(signal, data[[i]]$gProcessedSignal)
-aux <- data[[1]]
-flag <- aux[,c(37,38,39,40)]
-rm(aux)
-signal <- signal[,-1]
-signal <- as.matrix(signal)
-colnames(signal) <- targets$Nomeclature
-raw$E <- signal
-raw$flag <- flag
-setwd(tempdir)
 ```
   
   
@@ -86,15 +64,8 @@ hierclust(log2(raw$E), methdis="euclidean", methclu="complete", sel=FALSE, size=
 ```{r corrMatrix, fig.align='center'}
 cor.matrix(log2(raw$E), title="Pearson Correlation Matrix")
 ```
-   
-```{r plotFB, fig.align='center', fig.width=9}
-par(mfrow=c(2,3),oma = c(0, 0, 2, 0))
-for(i in 1:6)
-  plotFB(raw, array=i)
-mtext('Foreground vs Background', outer = TRUE)
-```
   
-
+  
 ```{r imagePlot, fig.align='center'}
 par(mfrow=c(2,3),oma = c(0, 0, 2, 0))
 for(i in 1:6){
@@ -103,8 +74,8 @@ for(i in 1:6){
 }
 mtext('Array Images', outer = TRUE)
 ```
-
-```{r densityPlot, fig.align='center'}
+  
+```{r densityPlot, fig.align='center', warning=FALSE}
 par(mfrow=c(1,1))
 plotDensities(raw, legend = 'topright', main='Raw Foreground densities')
 ```
@@ -124,7 +95,7 @@ The **goal** of normalization steps is to adjust for the effects caused by the v
   
   The method chosen for the background correction was `normexp`, proposed by Jeremy D. Silver et al. (2009)^[[Jeremy D. Silver et al. (2009)](http://biostatistics.oxfordjournals.org/content/10/2/352)]. In this method, a convolution of normal and exponential distributions is fitted to the foreground intensities using the background intensities as a covariate. Other approach include just using the ProcessedSignal from Agilent Feature Extraction, which is the signal left after all FE processing steps have been completed.
 
-```{r bgCorrect, results='hide'}
+```{r , eval=FALSE, bgCorrect, results='hide'}
 bgc = backgroundCorrect(raw,method='normexp')
 ```
 
@@ -134,7 +105,7 @@ bgc = backgroundCorrect(raw,method='normexp')
   To normalize the data, measurements from all arrays are rescaled into a unique final distribuition so that they can all be compared between them. For this step, a quantile scale transformation, proposed by Bolstad et al. (2003)^[[Bolstad et al. (2003)](http://bioinformatics.oxfordjournals.org/cgi/content/abstract/19/2/185)] was applied to the arrays.
 
 ```{r normArrays}
-norm = normalizeBetweenArrays(bgc,method='quantile')
+norm = normalizeBetweenArrays(raw,method='quantile')
 ```
   
 
@@ -164,7 +135,7 @@ plotDensities(eset, legend = 'topright', main='Normalized Foreground Densities')
 ```
 
 ```{r MAPlot, fig.align='center'}
-MAPlot(eset, 2, 3, title = "Post-Normalization MA Plot")
+MAPlot(eset, 3, 3, title = "Post-Normalization MA Plot")
 ```
   
 ***  
@@ -187,7 +158,7 @@ colnames(design) <- levels(f)
  Them we create the *contrasts matrix*, specifying the contrast of interest, in this case, pre-miR101 vc Control:
 
 ```{r contrastMatrix}
-contrast.matrix = makeContrasts(contrasts='PM101-Ctr', levels=design)
+contrast.matrix = makeContrasts('iTreg-Naive','iTreg-Teff','Naive-Teff',levels=design)
 ```
  
  After that we fit the linear model for each gene in `eset` given a series of arrays in `design`, and then the contrasts of interest:
@@ -215,45 +186,55 @@ P-values where adjust using False Discovery Rate correction(Benjamini & Hochberg
 fit2 <- eBayes(fit2)
 ```
   
-Now its possible to extract the results from the analysis
+Now its possible to extract the results for each coefficient from the analysis:  
 ```{r topTable}
-exprs = topTable(fit2, adjust="fdr", coef='PM101-Ctr', genelist=eset$genes, number=Inf)
+# iTreg vs Naive
+exprs = topTable(fit2, adjust="fdr", coef='iTreg-Naive', genelist=eset$genes, number=Inf)
+# iTreg vs Teff
+exprs2 = topTable(fit2, adjust="fdr", coef='iTreg-Teff', genelist=eset$genes, number=Inf)
+# Naive vs Teff
+exprs3 = topTable(fit2, adjust="fdr", coef='Naive-Teff', genelist=eset$genes, number=Inf)
 rank <- decideTests(fit2, method="separate", adjust.method="fdr", p.value=0.05, lfc=0)
 ```
-**Up regulated**: `r as.numeric(table(rank)[3])` transcripts  
-**Down regulated**: `r as.numeric(table(rank)[1])` transcripts  
+**iTreg vs Naive**  
+Up regulated: `r summary(rank)[1,1]` transcripts  
+Down regulated: `r summary(rank)[3,1]` transcripts  
+**iTreg vs Teff**  
+Up regulated: `r summary(rank)[1,2]` transcripts  
+Down regulated: `r summary(rank)[3,2]` transcripts  
+**Naive vs Teff**  
+Up regulated: `r summary(rank)[1,3]` transcripts  
+Down regulated: `r summary(rank)[3,3]` transcripts  
 
 ***  
 
 ### <font color="#315B7E"><b>3. Visualizing Differential Expression</b></font>  
-```{r volcanoplot, fig.align='center', fig.height=6, fig.width=6}
-volcanoplot(exprs$logFC, exprs$adj.P.Val, rank, title='pre-miR101 vs Control VolcanoPlot')
+iTreg vs Naive
+```{r fig.align='center', fig.height=6, fig.width=6}
+volcanoplot(fit2, 'iTreg-Naive',title='iTreg-Naive vs Control VolcanoPlot')
 ```
   
-```{r pvalHist, fig.align='center', fig.height=6, fig.width=6}
-histogram(exprs$P.Value, title = 'P-Value Histogram', col="yellow", xlab='p-value')
+```{r fig.align='center', fig.height=6, fig.width=6}
+diffexprs.hist(exprs, coef='iTreg-Naive')
 ```
   
-```{r fcHist, fig.align='center', fig.height=6, fig.width=6}
-histogram(exprs$logFC, title = ' Fold Change Histogram', col="firebrick2", xlab='log Fold Change')
+iTreg-Teff  
+```{r fig.align='center', fig.height=6, fig.width=6}
+volcanoplot(fit2, 'iTreg-Teff',title='iTreg-Teff vs Control VolcanoPlot')
 ```
   
-```{r adjpvalHist, fig.align='center', fig.height=6, fig.width=6}
-histogram(exprs$adj.P.Val, title = 'Adjusted P-value Histogram', col="royalblue", xlab='Adjusted p-value')
+```{r fig.align='center', fig.height=6, fig.width=6}
+diffexprs.hist(exprs2, coef='iTreg-Teff')
+```
+
+Naive vs Teff  
+```{r fig.align='center', fig.height=6, fig.width=6}
+volcanoplot(fit2, 'Naive-Teff',title='Naive-Teff vs Control VolcanoPlot')
 ```
   
-```{r avrgHist, fig.align='center', fig.height=6, fig.width=6}
-histogram(exprs$AveExpr, title = 'Average Expression Histogram', col="mediumorchid4", xlab='Average expression')
+```{r fig.align='center', fig.height=6, fig.width=6}
+diffexprs.hist(exprs3, coef='Naive-Teff')
 ```
-  
-```{r pvalDensity, fig.align='center', fig.height=6, fig.width=6}
-densityplot(exprs[,15:16],2,title='P-values density')
-```
-
-
-
-
-
 
 ***  
   

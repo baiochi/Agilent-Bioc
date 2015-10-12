@@ -49,7 +49,9 @@ summary(rank)
 diff = topTable(fit2, adjust="fdr", coef='PM101-Ctr', genelist=eset$genes, p.value=0.05, lfc=0, number=Inf)
 
 
-
+match <- c('TP53', '^APC2$', 'PTEN', '^BCL2$', '^MYC$', 'CDKN1C', 'CSK3B', 'CTNNB1', 'MCL1', 'EZH2')
+re <- paste(match, collapse = '|')
+diff[grep(re, diff$GeneName),][c(8,11)]
 
 # Plotting ----------------------------------------------------------------
 
@@ -145,7 +147,7 @@ mirandagenes = mir101_miranda$gene_symbol
 targenes = mir101_tar$Target.Gene
 arraygenes = diff$GeneName[which(diff$logFC<0)]
 intergenes <- Reduce(intersect, list(mirandagenes,targenes,arraygenes))
-array_miranda <- intersect(mir101_miranda$ext_transcript_id, diff$SystematicName[which(diff$logFC<0)])
+array_miranda <- intersect(mir101_miranda$gene_symbol, diff$GeneName[which(diff$logFC<0)])
 write.table(array_miranda, file='Array_miranda_transcript_list.txt', quote=FALSE, sep = '\t', col.names=FALSE, row.names=FALSE)
 write.table(intergenes, file='intersect_genes_list.txt', quote=FALSE, sep = '\t', col.names=FALSE, row.names=FALSE)
 
