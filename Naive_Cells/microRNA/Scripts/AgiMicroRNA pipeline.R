@@ -5,6 +5,8 @@
 source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
 library(AgiMicroRna)
 library(limma)
+library(marray)
+library(gplots)
 
 #------------AgiMicroRna analysis--------#
 #     iTreg-Naive iTreg-Teff Naive-Teff
@@ -99,18 +101,18 @@ for(i in seq(2,18,by=2)){
 tabela <- tabela[,-c(20:28)]
 colnames(tabela)[1] <- 'GeneName'
 completa <- merge(tabela, exprs[,c(3,7,8,4)], by='GeneName')
-colnames(completa)[20:22] <- c('P.Value CD4tgf/atRA-Naive','Adjusted.P.Value CD4tgf/atRA_Naive','logFC CD4tgf/atRA_Naive')
+colnames(completa)[20:22] <- c('P.Value_iTreg_Naive','Adjusted.P.Value_iTreg_Naive','logFC_iTreg_Naive2')
 completa <- merge(completa, exprs2[,c(3,7,8,4)], by='GeneName')
-colnames(completa)[23:25] <- c('P.Value CD4tgf/atRA-CD4med','Adjusted.P.Value CD4tgf/atRA_CD4med','logFC CD4tgf/atRA_CD4med')
+colnames(completa)[23:25] <- c('P.Value_iTreg_Teff','Adjusted.P.Value_iTreg_Teff','logFC_iTreg_Teff')
 completa <- merge(completa, exprs3[,c(3,7,8,4)], by='GeneName')
-colnames(completa)[26:28] <- c('P.Value Teff-Naive','Adjusted.P.Value CD4med_Naive','logFC CD4med_Naive')
+colnames(completa)[26:28] <- c('P.Value_Teff_Naive','Adjusted.P.Value_Teff_Naive','logFC_Teff_Naive')
 for(i in seq(3,19,by=2)) colnames(completa)[i] <- 'gDetected'
 colnames(completa)[1] <- 'miR_Name'
 #head(completa)
 write.table(completa, file='Complete_Table_Results.txt', sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
 
 #Only diffexpressed
-diffexprs <- subset(completa, Adjusted.P.Value_iTreg_Naive<0.05 | Adjusted.P.Value_iTreg_Teff<0.05 | Adjusted.P.Value_Teff_Naive<0.05)
+diffexprs <- subset(completa, Adjusted.P.Value_iTreg_Naive < 0.05 | Adjusted.P.Value_iTreg_Teff < 0.05 | Adjusted.P.Value_Teff_Naive < 0.05)
 #diffexprs <- diffexprs[with(diffexprs, order(miR_Name)), ]
 #head(diffexprs)
 write.table(completa, file='Differential_Expressed_miRs.txt', sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
@@ -155,9 +157,9 @@ data <- as.matrix(data)
 rbg = maPalette(low = "springgreen", high = "firebrick2", mid = "grey10", k = 100)
 par(oma = c(0, 0, 2, 0))
 pdf(file = 'microRNA_Clustering.pdf', width = 8, height = 12)
-heatmap.2(data, labCol = colnames(data), labRow = rownames(data),
-          scale = "none", symkey=FALSE, symbreaks=FALSE, keysize = 1.3, 
-          col = rbg, trace = 'none', margins = c(6,10),
+heatmap.2(data, labCol = colnames(data), labRow = rownames(data), 
+          distfun = , scale = "none", symkey=FALSE, symbreaks=FALSE, 
+          keysize = 1.3, col = rbg, trace = 'none', margins = c(6,10),
           key.title = 'Color Key', main='', lhei=c(1.5, 10))
 title(main='Differentially Expressed miRs\nHeatmap')
 dev.off()
