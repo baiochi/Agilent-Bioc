@@ -157,8 +157,11 @@ data <- as.matrix(data)
 rbg = maPalette(low = "springgreen", high = "firebrick2", mid = "grey10", k = 100)
 par(oma = c(0, 0, 2, 0))
 pdf(file = 'microRNA_Clustering.pdf', width = 8, height = 12)
-heatmap.2(data, labCol = colnames(data), labRow = rownames(data), 
-          distfun = , scale = "none", symkey=FALSE, symbreaks=FALSE, 
+heatmap.2(data, 
+          distfun = function(x) dist(x,method = 'euclidean'),
+          hclustfun = function(x) hclust(x,method = 'complete'),
+          labCol = colnames(data), labRow = rownames(data), 
+          scale = "none", symkey=FALSE, symbreaks=FALSE, 
           keysize = 1.3, col = rbg, trace = 'none', margins = c(6,10),
           key.title = 'Color Key', main='', lhei=c(1.5, 10))
 title(main='Differentially Expressed miRs\nHeatmap')
