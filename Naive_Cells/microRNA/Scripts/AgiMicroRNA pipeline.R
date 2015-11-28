@@ -32,15 +32,15 @@ colnames(dd.micro$TGS) <- targets$Nomeclature
 rownames(dd.micro$targets) <- targets$Nomeclature
 
 #Extract TotalGeneSignal
-tgs <- tgsMicroRna(dd.micro, half=FALSE, makePLOT=FALSE, verbose=FALSE)
+tgs <- tgsMicroRna(dd.micro, half=FALSE, makePLOT=FALSE, verbose=TRUE)
 tgs <- tgs[grep('hsa',tgs$genes$GeneName),]
 
 #Normalization
 norm <- tgsNormalization(tgs, "quantile", makePLOTpre=FALSE, 
-                        makePLOTpost=FALSE, targets.micro, verbose=TRUE)
+                        makePLOTpost=FALSE, targets.micro, verbose=FALSE)
 
 #Create Expression Set
-esetPROC <- esetMicroRna(norm, targets.micro, makePLOT=FALSE, verbose=FALSE)
+esetPROC <- esetMicroRna(norm, targets.micro, makePLOT=TRUE, verbose=TRUE)
 
 #Compute Differential Expression
 f <- factor(targets$Condition, levels = unique(targets$Condition))
@@ -146,7 +146,7 @@ rank2 <- rank[,c(1,3,2)]
 vennDiagram(rank2, include=c('up', 'down'))
 
 #hierarchical clustering
-colnames(eset$E)[1:3] <- c('CD4tgf/atRA_1','CD4tgf/atRA_2','CD4tgf/atRA_4')
+colnames(norm$TGS)[1:3] <- c('CD4tgf/atRA_1','CD4tgf/atRA_2','CD4tgf/atRA_4')
 hierclust(norm$TGS, methdis="spearman", methclu="complete", sel=FALSE) 
 
 #HEATMAP
@@ -166,7 +166,10 @@ dev.off()
 mtext(text='Differentially Expressed miRs Heatmap', outer=TRUE)
 
 
-
+# Save objet
+save(tgs, file = 'tgs.rda')
+save(norm, file = 'norm.rda')
+save(data, file = 'diffexprs.rda')
 
 
 # References
