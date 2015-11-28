@@ -1,4 +1,5 @@
 # Bulti-in Functions for Microarray Analysis
+# contact: baiochi@usp.br
 
 # =================================================
 #          Save Essential Plots
