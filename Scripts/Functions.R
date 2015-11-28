@@ -343,24 +343,20 @@ cluster.tree <- function(dat, title="Cluster Dendogram", save=FALSE, dist='eucli
 }
 
 # Pearson's Correlation Matrix
-cor.matrix <- function(dat, title="Correlation Matrix", save=FALSE){
-	dat.cor <- cor(dat)
-	if(save){
-		png(filename=paste(title, ".png", sep = ""))
-		par(oma = c(0, 0, 3, 0))
-		image(dat.cor,axes=F)
-		axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]],las=2)
-		axis(3,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]])
-		mtext(title, outer = TRUE, cex = 1.5)
-		dev.off()
-	}
-	else{
-		par(oma = c(0, 0, 3, 0))
-		image(dat.cor,axes=F)
-		axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]],las=2)
-		axis(3,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]])
-		mtext(title, outer = TRUE, cex = 1.5)
-	}
+cor.matrix <- function(dat, title="Correlation Matrix", save=FALSE, ...){
+  dat.cor <- cor(dat)
+  if(save){
+    png(filename=paste(title, ".png", sep = ""))
+    cor.matrix(dat, title, save=FALSE, ...)
+    dev.off()
+  }
+  else{
+    par(oma = c(0, 0, 3, 0))
+    image(dat.cor,axes=F, ...)
+    axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]],las=2)
+    axis(1,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]], las=2)
+    mtext(title, outer = TRUE, cex = 1.5)
+  }
 }
 
 # PCA Plot
