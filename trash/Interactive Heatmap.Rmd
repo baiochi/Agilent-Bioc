@@ -1,0 +1,38 @@
+---
+title: "Interactive Heatmap"
+output:
+  html_document:
+    highlight: tango
+    theme: flatly
+---
+
+```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
+library(d3heatmap)
+library(marray)
+load(url('https://raw.githubusercontent.com/baiochi/Agilent-Bioc/master/Naive_Cells/diffexprs.rda'))
+colnames(data)[1:3] <- c('iTreg_1','iTreg_2','iTreg_4')
+```
+
+```{r runHeatmap, echo=FALSE, fig.align='center', fig.height=10}
+rbg = maPalette(low = "springgreen", high = "firebrick2", mid = "grey10", k = 100)
+d3heatmap(data,
+	distfun = function(x) dist(x,method = 'euclidean'),
+	hclustfun = function(x) hclust(x,method = 'complete'),
+	scale = 'none', colors = rbg)
+```
+
+
+Code for this heatmap:  
+```{r results='hide'}
+#define palette
+rbg = maPalette(low = "springgreen", high = "firebrick2", mid = "grey10", k = 100)
+#plot
+d3heatmap(data,
+	distfun = function(x) dist(x,method = 'euclidean'),
+	hclustfun = function(x) hclust(x,method = 'complete'),
+	scale = 'none', colors = rbg)
+```
+
+
+

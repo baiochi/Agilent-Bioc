@@ -1,0 +1,241 @@
+---
+title: "Microarray Analysis BJ pre-miR29a"
+author: "João Baiochi, baiochi@usp.br"
+date: "January 7, 2016"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    highlight: tango
+    theme: flatly
+    toc: yes
+---
+
+```{r PreProcessing, echo=FALSE, warning=FALSE, results='hide'}
+library(limma)
+library(knitr)
+source("/Users/Baiochi/Desktop/Agilent-Bioc/Scripts/Functions.R")
+targets <- read.table(file="/Users/Baiochi/Dropbox/USP/Lab/RawData/BJ/Targets.txt", header=TRUE, sep="\t", stringsAsFactors=FALSE)
+raw = readAFE(targets = targets, path = "/Users/Baiochi/Dropbox/USP/Lab/RawData/BJ/", skip.lines =  9)
+colnames(raw$E) <- targets$Nomeclature
+rownames(raw$targets) <- targets$Nomeclature
+```
+  
+  
+  
+  
+  
+## <b>Introduction</b>  
+  
+  This microarray analysis was carried by **R/Bioconductor**^[[R Development Core Team: R: A language and environment for statistical computing 2004. R Foundation for Statistical Computing, Vienna, Austria [ISBN 3-900051-00-3]](http://www.R-project.org) ] ^[[Bioconductor: open software development for computational biology and bioinformatics Genome Biology20045:R80 doi: 10.1186/gb-2004-5-10-r80](http://www.genomebiology.com/content/5/10/R80)]  software, specially the package `limma` which is very powerfull for pre-processing the raw data and access differential expression^[[Ritchie, M.E., Phipson, B., Wu, D., Hu, Y., Law, C.W., Shi, W., and Smyth, G.K. (2015). limma powers differential expression analyses for RNA-sequencing and microarray studies. Nucleic Acids Research 43, doi: 10.1093/nar/gkv007.](http://nar.oxfordjournals.org/content/early/2015/01/20/nar.gkv007.full)]. 
+  
+***  
+  
+  
+## <b>Reading and Visualizing Raw Data</b>
+
+
+Targets file from this experiment:
+```{r targets, echo=FALSE}
+kable(targets, align='l')
+```
+
+  The output from Agilent Feature Extraction can be read using the read.maimages function, using the **ProcessedSignal** as the raw signal.
+```{r readImages, eval=FALSE}
+raw = read.maimages(targets$FileName, source="agilent", green.only=TRUE)
+```
+
+Some plots to visualize the raw data and check for possible outliers:
+```{r rawBoxplot, fig.align='center'}
+boxplot(log2(raw$E), main='ProcessedSignal Boxplot', col='forestgreen')
+```
+  
+```{r hierclust, fig.align='center'}
+hierclust(log2(raw$E), methdis="euclidean", methclu="complete", sel=FALSE, size=100)
+```
+ 
+```{r corrMatrix, fig.align='center'}
+cor.matrix(log2(raw$E), title="Pearson Correlation Matrix")
+```
+   
+```{r densityPlot, fig.align='center'}
+par(mfrow=c(1,1))
+plotDensities(raw, legend = 'topright', main='ProcessedSignal densities')
+```
+  
+    
+***  
+  
+## Pre-Processing steps  
+  
+  DNA microarray technologies allow for the simultaneous measurement of thousands of genomic features, such as gene expression. The accuracy and reproducibility of microarray measurements has been extensively validated in the past years. Despite that, in the measurements of any microarray set, there are always *technological artifacts* that may hide the true biological signal. 
+Causes of non biological variation in microarray measurements include differences in the sample preparation and the hybridization process, dye bias, cross-hybridization and scanner differences.  
+The **goal** of normalization steps is to adjust for the effects caused by the variations in the technology rather than the biology.
+  Background correction was not performed because the processed signal already passed through this step.  
+  
+### 1. Array normalization  
+  
+  To normalize the data, measurements from all arrays are rescaled into a unique final distribuition so that they can all be compared between them. For this step, a quantile scale transformation, proposed by Bolstad et al. (2003)^[[Bolstad et al. (2003)](http://bioinformatics.oxfordjournals.org/cgi/content/abstract/19/2/185)] was applied to the arrays.
+
+```{r normArrays}
+norm = normalizeBetweenArrays(raw,method='quantile')
+```
+  
+
+### 3. Filtering probes  
+  
+  A common pratice used to filter low expressed probes is to compute 95% percentile of the negative control probes on each array, keeping only the ones that are at least 10% brither than the negative controls on *n* arrays(n = number of replicates), as discussed in the *limma userguide*^[[limma-userguide section 17.4](http://www.bioconductor.org/packages/release/bioc/vignettes/limma/inst/doc/usersguide.pdf)]. Whoever, discard low expressed probes its not desirable for this study since we want to find both high and low expressed genees. So, only the controls probes and the ones flagged by Agilent FE as outliers will be removed.
+  
+```{r filterProbes}
+eset = norm[norm$genes$ControlType==0,]
+```
+  
+  For the last step in the pre-processing, within-array replicated probes were replaced by their average:
+```{r averageProbes}
+eset = avereps(eset,ID=eset$genes[,"SystematicName"])
+```
+  
+  
+### Post-normalization plots
+  
+```{r normBoxplot, fig.align='center'}
+boxplot(eset$E, main='Normalized Boxplot', col='deepskyblue2')
+```
+
+```{r normDensities, fig.align='center'}
+plotDensities(eset, legend = 'topright', main='Normalized Foreground Densities')
+```
+
+```{r MAPlot, fig.align='center'}
+MAPlot(eset, 2, 3, title = "Post-Normalization MA Plot")
+```
+  
+***  
+  
+## <b>Differential Expression</b>  
+
+  In this experiment we want to find differentially expressed genes between two classes, the cells treated with **pre-miR29a** and the **control miR**. In order to do the ordinary *Student's t-test*, statistical analysis will be made using **linear models and empirical bayes methods**. The reason for that it's because there is no enough observations(just a few replicates) to get a good estimate of the variance, therefore we need to increase the precision of the true underlying variance that we are trying to estimate.  
+  
+### 1. Linear models  
+  The `limma` package uses an approach called *linear models* to analyze designed microarray experiments which requires a *design matrix*, indicating the RNA samples applied to each array, and the *contrasts matrix*, specifing which comparisions we would like to make between the samples. For this single-channel experiment, the linear modeling is the same as ordinary analysis of variance or multiple regression except that a model is fitted for every gene.
+  
+  First, we create the *design matrix*:
+
+```{r designMatrix}
+f <- factor(targets$Condition, levels = unique(targets$Condition))
+design = model.matrix(~0 + f)
+colnames(design) <- levels(f)
+```
+
+ Them we create the *contrasts matrix*, specifying the contrast of interest, in this case, pre-miR101 vc Control:
+
+```{r contrastMatrix}
+contrast.matrix = makeContrasts(contrasts='PM29a-Ctr', levels=design)
+```
+ 
+ After that we fit the linear model for each gene in `eset` given a series of arrays in `design`, and then the contrasts of interest:
+
+```{r fitModel}
+fit <- lmFit(eset$E, design)
+fit2 <- contrasts.fit(fit, contrast.matrix)
+```
+  
+  
+### 2. Empirical Bayes  
+  Empirical Bayes method moderate the standard errors of the estimated log-fold changes. This results in more stable inference and improved power, especially for this experiments which have a small numbers of arrays^[[Smyth GK. (2004). Linear Models and Empirical Bayes Methods for Assessing Differential Expression in Microarray Experiments. Statistical Applications in Genetics and Molecular Biology, 3(1). doi: 10.2202/1544-6115.1027.](http://www.statsci.org/smyth/pubs/ebayes.pdf)]. The function `eBayes` compute an expected variance that has a higher probability of being representative of the true underlying variance, and then adjust the observed values towards this expected variance. Basicly it has the following steps:  
+1. Calculate an "average" variance based on all the genes in the array(which will be more accurate because there is a lot of data);  
+2. For each gene, compute the sample variance;  
+3. Adjust that value towards the expected varriance that was computed from all genes.  
+  
+  
+P-values where adjust using False Discovery Rate correction(Benjamini & Hochberg)^[[Benjamini Y, Hochberg Y: Controlling the false discovery rate: a practical and powerful approach to multiple testing. J R Stat Soc B 1995, 57:289-300.](http://www.jstor.org/stable/pdf/2346101.pdf)]  
+
+```{r eBayes}
+fit2 <- eBayes(fit2)
+```
+  
+Now its possible to extract the results from the analysis
+```{r topTable}
+exprs = topTable(fit2, adjust="fdr", coef='PM29a-Ctr', genelist=eset$genes, number=Inf)
+rank <- decideTests(fit2, method="separate", adjust.method="fdr", p.value=0.05, lfc=0)
+```
+**Up regulated**: `r as.numeric(table(exprs$P.Value<0.05 & exprs$logFC>0)[2])` transcripts  
+**Down regulated**: `r as.numeric(table(exprs$P.Value<0.05 & exprs$logFC<0)[2])` transcripts  
+
+Regulated transcripts above are from raw p-values < 0.05, since there was no transcript with adjusted.p-value < 0.05  
+
+***  
+
+### 3. Visualizing Differential Expression  
+```{r volcanoplot, fig.align='center', fig.height=6, fig.width=6}
+Pval = -log(exprs$P.Value)
+FC = exprs$logFC
+pval <- -log(0.05)
+fc <- 0
+plot(x = FC, y = Pval,
+     ylab = "-log Adjusted P.value", xlab = "log2 Fold Change", 
+     main = 'PM29a vs Control \nVolcanoPlot', pch = 20, col = "black", 
+     cex=.3, #xlim=(c(-6, 4)), ylim=(c(0, 15)), 
+     cex.axis=0.9, cex.lab=0.9)
+points(FC[(Pval>pval & FC>fc)],
+       Pval[(Pval>pval & FC>fc)],
+       col = "springgreen1",pch = 20, cex=.3)
+points(FC[(Pval>pval & FC< -fc)],
+       Pval[(Pval>pval & FC< -fc)],
+       col = "firebrick1",pch = 20, cex=.3)
+legend("bottomright",
+       legend = c(paste('Up-regulated:',as.numeric(table(exprs$P.Value<0.05 & FC>0)[2]), sep=' '),
+                  paste('Down-regulated:',as.numeric(table(exprs$P.Value<0.05 & FC<0)[2]), sep=' ') ),
+       lty= 0,# lwd=c(2.5,2.5),
+       pch = 20, cex=0.75, col=c('springgreen1','firebrick1'))
+```
+  
+```{r fcHist, fig.align='center', fig.height=6, fig.width=6}
+histogram(exprs$logFC, title = ' Fold Change Histogram', col="firebrick2", xlab='log Fold Change')
+```
+  
+```{r pvalHist, fig.align='center', fig.height=6, fig.width=6}
+histogram(exprs$P.Value, title = 'P-Value Histogram', col="yellow", xlab='p-value')
+```
+  
+```{r adjpvalHist, fig.align='center', fig.height=6, fig.width=6}
+histogram(exprs$adj.P.Val, title = 'Adjusted P-value Histogram', col="royalblue", xlab='Adjusted p-value')
+```
+  
+```{r avrgHist, fig.align='center', fig.height=6, fig.width=6}
+histogram(exprs$AveExpr, title = 'Average Expression Histogram', col="mediumorchid4", xlab='Average expression')
+```
+  
+```{r pvalDensity, fig.align='center', fig.height=6, fig.width=6}
+densityplot(exprs[,14:15],2,title='P-values density')
+```
+  
+***  
+  
+##<b>Accessing results</b>
+
+Results from differential expression can be accessed via the links above:  
+**Differential expression results**  
+- [Down regulated genes]()  
+- [Up regulated genes]()  
+**Down Regulated Genes List**  
+- By [SystematicName]()  
+- By [GeneName]()  
+- By [ProbeName]()  
+**Up Regulated Genes List**  
+- By [SystematicName]()  
+- By [GeneName]()  
+- By [ProbeName]()  
+    
+[Complete table result]()<small>(only genes with p.value <0.05)</small>  
+[Statistical]()<small>all genes</small>
+  
+[R source](https://www.dropbox.com/s/6iwi5tqgyeb1b78/report.Rmd?dl=0) 
+   
+  
+<small>last updated on: `r date()`</small>
+  
+##<b>References</b>
+
+
+

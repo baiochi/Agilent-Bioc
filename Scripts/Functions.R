@@ -351,7 +351,7 @@ cor.matrix <- function(dat, title="Correlation Matrix", save=FALSE, ...){
     dev.off()
   }
   else{
-    par(oma = c(0, 0, 3, 0))
+    par(oma = c(2, 2, 2, 0))
     image(dat.cor,axes=F, ...)
     axis(2,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]],las=2)
     axis(1,at=seq(0,1,length=ncol(dat.cor)),label=dimnames(dat.cor)[[2]], las=2)
@@ -541,12 +541,14 @@ t.test.all.genes <- function(x,s1,s2){
   return(out)
 }
 
-WriteResults <- function(fit, coefs, log=0, eset, filename, lists=FALSE){
-
+WriteResults <- function(fit, coefs, pval = 0.05, log=0, eset, filename, lists=FALSE){
+  
 	comp <- topTable(fit, adjust="fdr", coef=coefs, genelist=eset$genes, number=Inf, sort.by='logFC')
-	exprs <- topTable(fit, adjust="fdr", coef=coefs, p.value = 0.05, lfc=log, genelist=eset$genes, number=Inf, sort.by='logFC')
+	exprs <- topTable(fit, adjust="fdr", coef=coefs, p.value = pval, lfc=log, genelist=eset$genes, number=Inf, sort.by='logFC')
 	rownames(exprs) <- NULL
+	cat('Ja foi')
 	exprs$Regulation <- evaluate.exprs(exprs$logFC)
+	cat('batata')
 	up = subset(exprs, exprs$Regulation=='Up')
 	up = up[with(up, order(adj.P.Val)), ]
 	down = subset(exprs, exprs$Regulation=='Down')

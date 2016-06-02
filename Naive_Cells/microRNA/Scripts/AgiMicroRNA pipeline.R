@@ -14,7 +14,8 @@ library(gplots)
 # 0          736        801        820
 # 1           69         36         17
 
-# 23a, 30a, 636, 1299, - 422a, 610
+#c('hsa−miR−23a−5p','hsa−miR−30a−5p','hsa−miR−636',
+# 'hsa−miR−1299','hsa−miR−422a','hsa−miR−610')
 
 
 #Create Target File
@@ -155,6 +156,10 @@ colnames(data) <- targets$Nomeclature
 rownames(data) <- diffexprs$miR_Name
 data <- as.matrix(data)
 rbg = maPalette(low = "springgreen", high = "firebrick2", mid = "grey10", k = 100)
+
+#colorblind
+#rbg = maPalette(low = "yellow", high = "blue", k = 100)
+
 par(oma = c(0, 0, 2, 0))
 pdf(file = 'microRNA_Clustering.pdf', width = 8, height = 12)
 heatmap.2(data, 
